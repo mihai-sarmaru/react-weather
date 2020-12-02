@@ -1,11 +1,11 @@
 import React from "react";
-import Button from '@material-ui/core/Button'
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 
 function App() {
     return (
         <div>
-            <h1>Hello React World!</h1>
-            <Button variant='contained' color='primary'>Material UI Enabled</Button>
+            <h1>Hello React Weather</h1>
+            <CurrentWeather temperature={27} feelsLike={25} description='sunny'/>
         </div>
     );
 }
