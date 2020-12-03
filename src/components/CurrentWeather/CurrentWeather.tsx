@@ -1,20 +1,22 @@
 import React from "react";
 import 'fontsource-roboto';
 import { Grid, Typography } from "@material-ui/core";
-import {WiDaySunny} from 'react-icons/wi';
+
+import WeatherIcon from '../WeatherIcon/WeatherIcon';
 
 interface CurrentWeatherProps {
     temperature: number,
     feelsLike: number,
-    description: string
+    description: string,
+    weatherIconId: number
 }
 
 const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={6}>
-                    <div style={{textAlign: 'right'}}>
-                    <WiDaySunny size='140' />
+                <div style={{textAlign: 'right'}}>
+                    <WeatherIcon iconId={props.weatherIconId} size={140}/>
                 </div>
             </Grid>
             <Grid item xs={6}>
