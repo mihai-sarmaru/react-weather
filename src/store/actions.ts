@@ -1,0 +1,3 @@
+import { WeatherActionTypes } from './Weather/models/WeatherActionsModel';
+
+export type AppActions = WeatherActionTypes; // | DetailActionTypes ...
