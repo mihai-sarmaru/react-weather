@@ -13,14 +13,23 @@ const initialState: WeatherState = {
     weather: {} as IWeather
 }
 
+const FetchWeatherRequest = () => {
+    return { loading: true, error: '', weather: {} as IWeather };
+}
+
+const FetchWeatherSuccess = (action: WeatherActionTypes) => {
+    return { loading: false, error: '', weather: action.weather};
+}
+
+const FetchWeatherFailure = (action: WeatherActionTypes) => {
+    return { loading: false, error: action.error, weather: {} as IWeather};
+}
+
 export const weatherReducer = (state = initialState, action: WeatherActionTypes): WeatherState => {
     switch (action.type) {
-        case FETCH_WEATHER_REQUEST:
-          return { loading: true, error: '', weather: {} as IWeather };
-        case FETCH_WEATHER_SUCCESS:
-          return { loading: false, error: '', weather: action.weather};
-        case FETCH_WEATHER_FAILURE:
-          return { loading: false, error: action.error, weather: {} as IWeather};
+        case FETCH_WEATHER_REQUEST: return FetchWeatherRequest();
+        case FETCH_WEATHER_SUCCESS: return FetchWeatherSuccess(action);
+        case FETCH_WEATHER_FAILURE: return FetchWeatherFailure(action);
         default:
           return state;
     }
