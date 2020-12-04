@@ -72,12 +72,12 @@ const DetailItem: React.FC<DetailItemProps> = (props) => {
 
     return(
         <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid item xs={4}>
                 <div style={{textAlign: 'right'}}>
                     {itemIcon}
                 </div>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={8}>
                 <div style={{textAlign: 'left'}}>
                     <Typography variant='subtitle2'><strong>{itemValue}</strong></Typography>
                     <Typography variant='body2'>{itemDescription}</Typography>
