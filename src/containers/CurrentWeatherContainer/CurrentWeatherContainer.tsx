@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import DetailWeather from '../../components/DetailWeather/DetailWeather';
+import FetchingWeather from '../../components/FetchingWeather/FetchingWeather';
 import { AppActions } from '../../store/actions';
 import { AppState } from '../../store/rootStore';
 import { IWeather } from '../../store/Weather/models/Weather';
@@ -40,7 +41,7 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     }
 
     onLoadWeather = () => {
-        let weather = <h1>Loading...</h1>;
+        let weather = <FetchingWeather />;
 
         if (this.props.weather.currentWeather) {
             weather = (
@@ -51,7 +52,9 @@ class CurrentWeatherContainer extends Component<LinkProps> {
                         description={this.props.weather.currentWeather.weather[0].description}
                         weatherIconId={this.props.weather.currentWeather.weather[0].id} />
 
-                <DetailWeather currentWeather={this.props.weather.currentWeather} />
+                <DetailWeather
+                    currentWeather={this.props.weather.currentWeather}
+                    precipitation={this.props.weather.hourlyWeather[0].precipitation} />
                 </div>
             );
         }

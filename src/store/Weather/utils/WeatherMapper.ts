@@ -1,12 +1,14 @@
-import { IWeather, IWeatherDescription } from "../models/Weather"
+import { IHourlyWeather, IWeather, IWeatherDescription } from "../models/Weather"
 
 export const mapIWeather = (weather: any): IWeather => {
     const coords = mapIWeatherCoordinates(weather);
     const current = mapICurrentWeather(weather.current);
+    const hourly = mapIHourlyWeather(weather.hourly);
     
     const convertedWeather: IWeather = {
         coordinates: coords,
-        currentWeather: current
+        currentWeather: current,
+        hourlyWeather: hourly
     }
 
     return convertedWeather;
@@ -46,5 +48,17 @@ const mapIWeatherDescription = (weather: any[]) => {
             main: wdesc.main,
             description: wdesc.description,
         } as IWeatherDescription);
+    });
+}
+
+const mapIHourlyWeather = (hourlyWeather: any[]) => {
+    return hourlyWeather.map(hourly => {
+        return ({
+            dt: hourly.dt * 1000,
+            temp: hourly.temp.toFixed(0),
+            windSpeed: hourly.wind_speed.toFixed(0),
+            precipitation: hourly.pop,
+            weather: mapIWeatherDescription(hourly.weather)
+        } as IHourlyWeather);
     });
 }

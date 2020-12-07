@@ -20,6 +20,14 @@ export interface ICurrentWeather {
     weather: IWeatherDescription[];
 }
 
+export interface IHourlyWeather {
+    dt: number;
+    temp: number;
+    windSpeed: number;
+    precipitation: number;
+    weather: IWeatherDescription[];
+}
+
 export interface IWeatherCoordinates {
     latitude: number;
     longitude: number;
@@ -29,4 +37,5 @@ export interface IWeatherCoordinates {
 export interface IWeather {
     coordinates: IWeatherCoordinates;
     currentWeather: ICurrentWeather;
+    hourlyWeather: IHourlyWeather[];
 }
