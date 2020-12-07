@@ -12,7 +12,7 @@ import { fetchWeather } from '../../store/Weather/WeatherActions';
 interface Props {}
 
 interface LinkStateProps {
-    currentWeather: IWeather;
+    weather: IWeather;
 }
 
 interface LinkDispatchProps {
@@ -23,7 +23,7 @@ type LinkProps = Props & LinkStateProps & LinkDispatchProps;
 
 const mapStateToProps = (state: AppState): LinkStateProps => {
     return {
-        currentWeather: state.weatherReducer.weather
+        weather: state.weatherReducer.weather
     }
 };
 
@@ -38,12 +38,28 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     componentDidMount() {
         this.props.fetchWeather();
     }
+
+    onLoadWeather = () => {
+        let weather = <h1>Loading...</h1>;
+
+        if (this.props.weather.currentWeather) {
+            weather = (
+                <CurrentWeather
+                    temperature={this.props.weather.currentWeather.temp}
+                    feelsLike={this.props.weather.currentWeather.feelsLike}
+                    description={this.props.weather.currentWeather.weather[0].description}
+                    weatherIconId={this.props.weather.currentWeather.weather[0].id} />
+            );
+        }
+
+        return weather;
+    }
     
     render() {
         return(
             <div>
                 <h1>Hello React Weather</h1>
-                <CurrentWeather temperature={27} feelsLike={25} description='sunny' weatherIconId={800} />
+                {this.onLoadWeather()}
 
                 <DetailWeather />
             </div>
