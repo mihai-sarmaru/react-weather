@@ -6,7 +6,7 @@ import DetailItemType from './DetailItemTypes';
 
 interface DetailItemProps {
     itemType: DetailItemType,
-    value: string
+    value: number | string
 }
 
 const DetailItem: React.FC<DetailItemProps> = (props) => {
@@ -28,7 +28,7 @@ const DetailItem: React.FC<DetailItemProps> = (props) => {
             break;
         case DetailItemType.UV_INDEX:
             itemIcon = <Icon.WiSolarEclipse size={42} />
-            itemValue = props.value;
+            itemValue = props.value as string;
             itemDescription = 'UV index';
             break;
         case DetailItemType.CLOUD_COVER:
@@ -58,12 +58,12 @@ const DetailItem: React.FC<DetailItemProps> = (props) => {
             break;
         case DetailItemType.SUNRISE:
             itemIcon = <Icon.WiSunrise size={42} />
-            itemValue = props.value;
+            itemValue = props.value as string;
             itemDescription = 'Sunrise';
             break;
         case DetailItemType.SUNSET:
             itemIcon = <Icon.WiSunset size={42} />
-            itemValue = props.value;
+            itemValue = props.value as string;
             itemDescription = 'Sunset';
             break;
         default:
