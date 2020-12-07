@@ -3,6 +3,7 @@ import axios from '../../axios/axios-weather';
 import { FETCH_WEATHER_REQUEST, FETCH_WEATHER_SUCCESS, FETCH_WEATHER_FAILURE } from './models/WeatherActionsModel';
 import { IWeather } from './models/Weather';
 import { AppActions } from '../actions';
+import { mapIWeather } from './utils/WeatherMapper';
 
 const requestWeather = (): AppActions => {
     return {
@@ -36,11 +37,12 @@ export const fetchWeather = () => {
         dispatch(requestWeather());
         axios.get('/weather.json')
             .then(response => { 
-                console.log(response.data.current);
-                dispatch(receiveWeather(response.data.current));
+                console.log(response.data);
+                dispatch(receiveWeather(mapIWeather(response.data)));
             })
             .catch(error => {
                 console.log(error.message);
+                dispatch(invalidWeather());
             });
     };
 }
