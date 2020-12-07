@@ -44,11 +44,15 @@ class CurrentWeatherContainer extends Component<LinkProps> {
 
         if (this.props.weather.currentWeather) {
             weather = (
-                <CurrentWeather
+                <div>
+                    <CurrentWeather
                     temperature={this.props.weather.currentWeather.temp}
                     feelsLike={this.props.weather.currentWeather.feelsLike}
                     description={this.props.weather.currentWeather.weather[0].description}
                     weatherIconId={this.props.weather.currentWeather.weather[0].id} />
+
+                <DetailWeather currentWeather={this.props.weather.currentWeather} />
+                </div>
             );
         }
 
@@ -60,8 +64,6 @@ class CurrentWeatherContainer extends Component<LinkProps> {
             <div>
                 <h1>Hello React Weather</h1>
                 {this.onLoadWeather()}
-
-                <DetailWeather />
             </div>
         );
     }
