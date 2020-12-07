@@ -20,6 +20,13 @@ export interface ICurrentWeather {
     weather: IWeatherDescription[];
 }
 
+export interface IWeatherCoordinates {
+    latitude: number;
+    longitude: number;
+    timezoneOffset: number;
+}
+
 export interface IWeather {
+    coordinates: IWeatherCoordinates;
     currentWeather: ICurrentWeather;
 }
