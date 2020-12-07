@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import DetailItem from './DetailItem/DetailItem';
 import DetailItemType from './DetailItem/DetailItemTypes';
 import { ICurrentWeather } from '../../store/Weather/models/Weather';
+import { UnixUTCToHourMinuteString } from '../../utils/DateConverter';
 
 interface DetailWeatherProps {
     currentWeather: ICurrentWeather;
@@ -37,10 +38,10 @@ const DetailWeather: React.FC<DetailWeatherProps> = (props) => {
                     <DetailItem itemType={DetailItemType.VISIBILITY} value={props.currentWeather.visibility}/>
                 </Grid>
                 <Grid item xs={6} md={4} lg={3}>
-                    <DetailItem itemType={DetailItemType.SUNRISE} value={props.currentWeather.sunrise}/>
+                    <DetailItem itemType={DetailItemType.SUNRISE} value={UnixUTCToHourMinuteString(props.currentWeather.sunrise)}/>
                 </Grid>
                 <Grid item xs={6} md={4} lg={3}>
-                    <DetailItem itemType={DetailItemType.SUNSET} value={props.currentWeather.sunset}/>
+                    <DetailItem itemType={DetailItemType.SUNSET} value={UnixUTCToHourMinuteString(props.currentWeather.sunset)}/>
                 </Grid>
             </Grid>
         </div>
