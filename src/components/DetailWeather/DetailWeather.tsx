@@ -7,6 +7,7 @@ import { UnixUTCToHourMinuteString } from '../../utils/DateConverter';
 
 interface DetailWeatherProps {
     currentWeather: ICurrentWeather;
+    precipitation: number;
 }
 
 const DetailWeather: React.FC<DetailWeatherProps> = (props) => {
@@ -14,7 +15,7 @@ const DetailWeather: React.FC<DetailWeatherProps> = (props) => {
         <div style={{margin: 'auto', width: '80%'}}>
             <Grid container spacing={2}>
                 <Grid item xs={6} md={4} lg={3}>
-                    <DetailItem itemType={DetailItemType.PRECIPITATION_CHANCE} value='???'/>
+                    <DetailItem itemType={DetailItemType.PRECIPITATION_CHANCE} value={props.precipitation}/>
                 </Grid>
                 <Grid item xs={6} md={4} lg={3}>
                     <DetailItem itemType={DetailItemType.WIND} value={props.currentWeather.windSpeed}/>

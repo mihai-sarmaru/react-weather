@@ -52,7 +52,9 @@ class CurrentWeatherContainer extends Component<LinkProps> {
                         description={this.props.weather.currentWeather.weather[0].description}
                         weatherIconId={this.props.weather.currentWeather.weather[0].id} />
 
-                <DetailWeather currentWeather={this.props.weather.currentWeather} />
+                <DetailWeather
+                    currentWeather={this.props.weather.currentWeather}
+                    precipitation={this.props.weather.hourlyWeather[0].precipitation} />
                 </div>
             );
         }
