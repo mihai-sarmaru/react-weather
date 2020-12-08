@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
@@ -69,7 +70,7 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     render() {
         return(
             <div>
-                <h1>Hello React Weather</h1>
+                <Link to='/forecast'>Forecast</Link>
                 {this.onLoadWeather()}
             </div>
         );
