@@ -5,6 +5,7 @@ import * as Icon from 'react-icons/md'
 import WeatherIcon from '../../WeatherIcon/WeatherIcon';
 import OverviewDetailItem from '../OverviewDetailItem/OverviewDetailItem';
 import { IForecastWeather } from '../../../store/Weather/models/Weather';
+import { UnixUTCToDayString } from '../../../utils/DateConverter';
 
 interface OverviewItemProps {
     forecast: IForecastWeather;
@@ -20,7 +21,7 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
             </Grid>
             <Grid item xs={8}>
                 <div style={{textAlign: 'left'}}>
-                    <Typography variant='h6'><strong>Wednesday 27</strong></Typography>
+                    <Typography variant='h6'><strong>{UnixUTCToDayString(props.forecast.dt)}</strong></Typography>
                     <div style={{display: 'flex'}}>
                         <WiIcon.WiUmbrella size={20} />
                         <Typography variant='subtitle2' style={{marginRight: '20px'}}>{props.forecast.precipitation} %</Typography>
