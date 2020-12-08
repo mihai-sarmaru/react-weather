@@ -17,7 +17,7 @@ interface LinkStateProps {
 }
 
 interface LinkDispatchProps {
-    fetchWeather: () => void;
+    fetchWeather: (lat: number, long: number) => void;
 }
 
 type LinkProps = Props & LinkStateProps & LinkDispatchProps;
@@ -37,7 +37,11 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, {}, AppActions>) =
 class CurrentWeatherContainer extends Component<LinkProps> {
 
     componentDidMount() {
-        this.props.fetchWeather();
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                this.props.fetchWeather(pos.coords.latitude, pos.coords.longitude);
+            });
+        }
     }
 
     onLoadWeather = () => {

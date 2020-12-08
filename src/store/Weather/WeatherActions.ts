@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux';
 import axios from '../../axios/axios-weather';
+import env from '../../utils/env';
 import { FETCH_WEATHER_REQUEST, FETCH_WEATHER_SUCCESS, FETCH_WEATHER_FAILURE } from './models/WeatherActionsModel';
 import { IWeather } from './models/Weather';
 import { AppActions } from '../actions';
@@ -32,10 +33,10 @@ const invalidWeather = (): AppActions => {
     }
 }
 
-export const fetchWeather = () => {
+export const fetchWeather = (lat: number, long: number) => {
     return (dispatch: Dispatch<AppActions>) => {
         dispatch(requestWeather());
-        axios.get('/weather.json')
+        axios.get('/' + env.getApiDefaultParams(), {params: {lat: lat, lon: long}})
             .then(response => { 
                 console.log(response.data);
                 dispatch(receiveWeather(mapIWeather(response.data)));
