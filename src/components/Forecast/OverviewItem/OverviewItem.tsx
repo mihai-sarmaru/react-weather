@@ -9,6 +9,8 @@ import { UnixUTCToDayString } from '../../../utils/DateConverter';
 
 interface OverviewItemProps {
     forecast: IForecastWeather;
+    expanded: boolean;
+    expandClick: () => void;
 }
 
 const OverviewItem: React.FC<OverviewItemProps> = (props) => {
@@ -32,13 +34,13 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
             </Grid>
             <Grid item xs={2}>
                 <div style={{textAlign: 'right'}}>
-                    <IconButton>
-                        <Icon.MdExpandMore size={32} />
+                    <IconButton onClick={props.expandClick}>
+                        {props.expanded ? <Icon.MdExpandLess size={32}/> : <Icon.MdExpandMore size={32}/>}
                     </IconButton>
                 </div>
             </Grid>
 
-            <OverviewDetailItem forecast={props.forecast}/>
+            {props.expanded ? <OverviewDetailItem forecast={props.forecast}/> : null}
 
         </Grid>
     );
