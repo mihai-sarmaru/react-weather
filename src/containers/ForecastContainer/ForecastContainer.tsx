@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import { AppState } from '../../store/rootStore';
 import { IForecastWeather } from '../../store/Weather/models/Weather';
 import OverviewItem from '../../components/Forecast/OverviewItem/OverviewItem';
+import FetchingWeather from '../../components/FetchingWeather/FetchingWeather';
 
 interface Props {}
 
@@ -23,9 +24,18 @@ const mapStateToProps = (state: AppState): LinkStateProps => {
 
 class ForecastContainer extends Component<LinkProps> {
     render() {
+
+        let overviewItems = [<FetchingWeather />];
+        if (this.props.forecast) {
+            overviewItems = this.props.forecast.map(item => (
+                <OverviewItem key={item.dt} forecast={item}/>
+                )
+            );
+        }
+
         return (
             <div>
-                {this.props.forecast ? <OverviewItem forecast={this.props.forecast[0]}/> : <h1>NOT LOADED</h1>}
+                {overviewItems}
             </div>
         )
     }
