@@ -15,7 +15,7 @@ const OverviewDetailItem: React.FC<OverviewDetailItemProps> = (props) => {
             <Grid item xs={2}/>
             <Grid item xs={10}>
                 
-                <div style={{textAlign: 'left', marginLeft: '12px'}}>
+                <div style={{textAlign: 'left', marginLeft: '12px', marginBottom: '20px'}}>
                     <Typography variant='subtitle1'>{props.forecast.weather[0].description}</Typography>
 
                     <Grid container spacing={2} style={{marginTop: '15px'}}>
