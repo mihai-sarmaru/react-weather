@@ -1,14 +1,16 @@
-import { IHourlyWeather, IWeather, IWeatherDescription } from "../models/Weather"
+import { IForecastWeather, IHourlyWeather, IWeather, IWeatherDescription } from "../models/Weather"
 
 export const mapIWeather = (weather: any): IWeather => {
     const coords = mapIWeatherCoordinates(weather);
     const current = mapICurrentWeather(weather.current);
     const hourly = mapIHourlyWeather(weather.hourly);
+    const fcst = mapIForecastWeather(weather.daily);
     
     const convertedWeather: IWeather = {
         coordinates: coords,
         currentWeather: current,
-        hourlyWeather: hourly
+        hourlyWeather: hourly,
+        forecast: fcst
     }
 
     return convertedWeather;
@@ -60,5 +62,23 @@ const mapIHourlyWeather = (hourlyWeather: any[]) => {
             precipitation: hourly.pop * 100,
             weather: mapIWeatherDescription(hourly.weather)
         } as IHourlyWeather);
+    });
+}
+
+const mapIForecastWeather = (forecastWeather: any[]) => {
+    return forecastWeather.map(forecast => {
+        return ({
+            dt: forecast.dt * 1000,
+            precipitation: forecast.pop * 100,
+            maxTemp: +forecast.temp.max.toFixed(0),
+            minTemp: +forecast.temp.min.toFixed(0),
+            windSpeed: +forecast.wind_speed.toFixed(0),
+            uvi: forecast.uvi,
+            clouds: forecast.clouds,
+            pressure: forecast.pressure,
+            sunrise: forecast.sunrise * 1000,
+            sunset: forecast.sunset * 1000,
+            weather: mapIWeatherDescription(forecast.weather)
+        } as IForecastWeather);
     });
 }
