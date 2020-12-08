@@ -30,9 +30,11 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
                 </div>
             </Grid>
             <Grid item xs={2}>
-                <IconButton>
-                    <Icon.MdExpandMore size={32} />
-                </IconButton>
+                <div style={{textAlign: 'right'}}>
+                    <IconButton>
+                        <Icon.MdExpandMore size={32} />
+                    </IconButton>
+                </div>
             </Grid>
 
             <OverviewDetailItem forecast={props.forecast}/>
