@@ -25,7 +25,7 @@ class ForecastContainer extends Component<LinkProps> {
     render() {
         return (
             <div>
-                <OverviewItem />
+                {this.props.forecast ? <OverviewItem forecast={this.props.forecast[0]}/> : <h1>NOT LOADED</h1>}
             </div>
         )
     }
