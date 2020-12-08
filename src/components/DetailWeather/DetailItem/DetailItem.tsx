@@ -71,7 +71,7 @@ const DetailItem: React.FC<DetailItemProps> = (props) => {
     }
 
     return(
-        <Grid container spacing={2}>
+        <Grid container spacing={2} style={{marginTop: '1px'}}>
             <Grid item xs={4}>
                 <div style={{textAlign: 'right'}}>
                     {itemIcon}

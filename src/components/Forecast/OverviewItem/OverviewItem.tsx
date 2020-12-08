@@ -3,7 +3,7 @@ import { Grid, IconButton, Typography } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
 import * as Icon from 'react-icons/md'
 import WeatherIcon from '../../WeatherIcon/WeatherIcon';
-import OverviewDetailItem from './OverviewDetailItem/OverviewDetailItem';
+import OverviewDetailItem from '../OverviewDetailItem/OverviewDetailItem';
 
 const OverviewItem = () => {
     return (

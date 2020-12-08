@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography, Paper } from '@material-ui/core';
-import DetailItem from '../../../DetailWeather/DetailItem/DetailItem';
-import DetailItemType from '../../../DetailWeather/DetailItem/DetailItemTypes';
+import DetailItem from '../../DetailWeather/DetailItem/DetailItem';
+import DetailItemType from '../../DetailWeather/DetailItem/DetailItemTypes';
 
 const OverviewDetailItem = () => {
     return(
