@@ -41,6 +41,10 @@ class CurrentWeatherContainer extends Component<LinkProps> {
         if ('geolocation' in navigator) {
             navigator.geolocation.getCurrentPosition(pos => {
                 this.props.fetchWeather(pos.coords.latitude, pos.coords.longitude);
+            }, error => {
+                // TODO: remove this when publishing
+                console.log(error.message);
+                this.props.fetchWeather(+process.env.REACT_APP_DEFAULT_LAT!, +process.env.REACT_APP_DEFAULT_LONG!);
             });
         }
     }
