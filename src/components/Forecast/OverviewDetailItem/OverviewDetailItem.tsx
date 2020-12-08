@@ -12,10 +12,10 @@ interface OverviewDetailItemProps {
 const OverviewDetailItem: React.FC<OverviewDetailItemProps> = (props) => {
     return(
         <Grid container spacing={2}>
-            <Grid item xs={2}/>
-            <Grid item xs={10}>
+            <Grid item xs={2} md={1}/>
+            <Grid item xs={10} md={11}>
                 
-                <div style={{textAlign: 'left', marginLeft: '12px', marginBottom: '20px'}}>
+                <div style={{textAlign: 'left', marginLeft: '8px', marginBottom: '20px'}}>
                     <Typography variant='subtitle1'>{props.forecast.weather[0].description}</Typography>
 
                     <Grid container spacing={2} style={{marginTop: '15px'}}>
