@@ -9,7 +9,6 @@ interface Props {}
 
 interface LinkStateProps {
     forecast: IForecastWeather[];
-    loading: boolean;
 }
 
 interface LinkDispatchProps {}
@@ -19,7 +18,6 @@ type LinkProps = Props & LinkStateProps & LinkDispatchProps;
 const mapStateToProps = (state: AppState): LinkStateProps => {
     return {
         forecast: state.weatherReducer.weather.forecast,
-        loading: state.weatherReducer.loading
     }
 }
 
