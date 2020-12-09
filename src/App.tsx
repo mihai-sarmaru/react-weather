@@ -8,7 +8,6 @@ import HourlyWeatherContainer from "./containers/HourlyWeatherContainer/HourlyWe
 function App() {
     return (
         <React.Fragment>
-            <h1>Hello React Weather</h1>
             <QuickNavigation />
             <Switch>
                 <Route path='/hourly' component={HourlyWeatherContainer} />
