@@ -43,14 +43,7 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
 
     return(
         <React.Fragment>
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-                <LineChart width={400} height={200} data={parsedData}>
-                    <XAxis dataKey='dt'/>
-                    {/* <YAxis dataKey={chartDataKey} /> */}
-                    <Line dataKey={chartDataKey} stroke="#000" strokeWidth={2}/>
-                </LineChart>
-            </div>
-            <div>
+            <div style={{marginBottom: '30px'}}>
                 <IconButton
                     color={props.chartType === chartType.TEMPERATURE ? 'primary' : 'default'}
                     onClick={() => props.chartTypeHandler(chartType.TEMPERATURE)}>
@@ -66,6 +59,13 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
                     onClick={() => props.chartTypeHandler(chartType.PRECIPITATION)}>
                     <WiIcon.WiUmbrella size={32}/>
                 </IconButton>
+            </div>
+            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+                <LineChart width={400} height={200} data={parsedData}>
+                    <XAxis dataKey='dt'/>
+                    <YAxis dataKey={chartDataKey} width={30}/>
+                    <Line dataKey={chartDataKey} strokeWidth={2}/>
+                </LineChart>
             </div>
         </React.Fragment>
     );
