@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Label, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Label, ResponsiveContainer, Tooltip } from 'recharts';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import { UnixUTCHourString } from '../../utils/DateConverter';
 import chartType from './chartType';
@@ -66,13 +66,18 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
                 </IconButton>
             </div>
             <div style={{display: 'flex', justifyContent:'center'}}>
-                <ResponsiveContainer width='90%' height={200}>
+                <ResponsiveContainer width='90%' height={250}>
                     <LineChart margin={{top: 35, left: 10, right: 10}} data={parsedData}>
-                        <XAxis dataKey='dt' tickLine={false} tickMargin={7}/>
+                        <XAxis dataKey='dt' tickLine={false} tick={<div/>}>
+                            <Label position='insideBottomLeft' offset={0} value='Now'/>
+                            <Label position='insideBottom' offset={0} value='24h'/>
+                            <Label position='insideBottomRight' offset={0} value='48h'/>
+                        </XAxis>
                         <YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}>
-                            <Label position='top' offset={20} value={chartDataUnit} angle={0}/>
+                            <Label position='top' offset={20} value={chartDataUnit}/>
                         </YAxis>
                         <CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
+                        <Tooltip />
                         <Line dataKey={chartDataKey} strokeWidth={2}/>
                     </LineChart>
                 </ResponsiveContainer>
