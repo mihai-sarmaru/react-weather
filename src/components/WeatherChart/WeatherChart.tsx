@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Label } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Label, ResponsiveContainer } from 'recharts';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import { UnixUTCHourString } from '../../utils/DateConverter';
 import chartType from './chartType';
@@ -65,15 +65,17 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
                     <WiIcon.WiUmbrella size={32}/>
                 </IconButton>
             </div>
-            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-                <LineChart width={420} height={200} margin={{top: 35, left: 5}} data={parsedData}>
-                    <XAxis dataKey='dt' tickLine={false} tickMargin={7}/>
-                    <YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}>
-                        <Label position='top' offset={20} value={chartDataUnit} angle={0}/>
-                    </YAxis>
-                    <CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
-                    <Line dataKey={chartDataKey} strokeWidth={2}/>
-                </LineChart>
+            <div style={{display: 'flex', justifyContent:'center'}}>
+                <ResponsiveContainer width='90%' height={200}>
+                    <LineChart margin={{top: 35, left: 10, right: 10}} data={parsedData}>
+                        <XAxis dataKey='dt' tickLine={false} tickMargin={7}/>
+                        <YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}>
+                            <Label position='top' offset={20} value={chartDataUnit} angle={0}/>
+                        </YAxis>
+                        <CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
+                        <Line dataKey={chartDataKey} strokeWidth={2}/>
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
         </React.Fragment>
     );
