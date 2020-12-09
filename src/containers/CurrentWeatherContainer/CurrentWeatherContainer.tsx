@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
@@ -40,6 +41,10 @@ class CurrentWeatherContainer extends Component<LinkProps> {
         if ('geolocation' in navigator) {
             navigator.geolocation.getCurrentPosition(pos => {
                 this.props.fetchWeather(pos.coords.latitude, pos.coords.longitude);
+            }, error => {
+                // TODO: remove this when publishing
+                console.log(error.message);
+                this.props.fetchWeather(+process.env.REACT_APP_DEFAULT_LAT!, +process.env.REACT_APP_DEFAULT_LONG!);
             });
         }
     }
@@ -69,7 +74,7 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     render() {
         return(
             <div>
-                <h1>Hello React Weather</h1>
+                <Link to='/forecast'>Forecast</Link>
                 {this.onLoadWeather()}
             </div>
         );

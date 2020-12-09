@@ -33,7 +33,7 @@ class ForecastContainer extends Component<LinkProps> {
         expanded: []
     }
 
-    componentDidUpdate() {
+    componentDidMount() {
         // prevent inifite loop
         if (this.props.forecast && this.state.expanded.length === 0) {
             this.initLocalState(this.props.forecast.length);
@@ -60,7 +60,7 @@ class ForecastContainer extends Component<LinkProps> {
         })
     }
 
-    render() {
+    fetchWeatherForecast = () => {
         let overviewItems = [<FetchingWeather key={'fetching'} />];
         if (this.props.forecast) {
             overviewItems = this.props.forecast.map( (item, index) => (
@@ -72,10 +72,13 @@ class ForecastContainer extends Component<LinkProps> {
                 )
             );
         }
+        return overviewItems;
+    }
 
+    render() {
         return (
             <div>
-                {overviewItems}
+                {this.fetchWeatherForecast()}
             </div>
         )
     }

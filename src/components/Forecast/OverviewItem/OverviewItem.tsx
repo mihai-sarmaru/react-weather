@@ -15,13 +15,13 @@ interface OverviewItemProps {
 
 const OverviewItem: React.FC<OverviewItemProps> = (props) => {
     return (
-        <Grid container spacing={4} style={{margin: 'auto', width: '80%'}}>
-            <Grid item xs={2}>
-                <div style={{textAlign: 'right'}}>
+        <Grid container spacing={2} style={{margin: 'auto', width: '96%'}}>
+            <Grid item xs={2} md={1}>
+                <div style={{textAlign: 'center'}}>
                     <WeatherIcon iconId={props.forecast.weather[0].id} size={58}/>
                 </div>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={8} md={10}>
                 <div style={{textAlign: 'left'}}>
                     <Typography variant='h6'><strong>{UnixUTCToDayString(props.forecast.dt)}</strong></Typography>
                     <div style={{display: 'flex'}}>
@@ -32,7 +32,7 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
                     </div>
                 </div>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} md={1}>
                 <div style={{textAlign: 'right'}}>
                     <IconButton onClick={props.expandClick}>
                         {props.expanded ? <Icon.MdExpandLess size={32}/> : <Icon.MdExpandMore size={32}/>}
