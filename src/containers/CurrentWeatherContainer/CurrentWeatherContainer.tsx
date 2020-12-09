@@ -74,7 +74,8 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     render() {
         return(
             <div>
-                <Link to='/forecast'>Forecast</Link>
+                <Link to='/forecast'>Forecast </Link>
+                <Link to='/hourly'> Hourly</Link>
                 {this.onLoadWeather()}
             </div>
         );

@@ -8,3 +8,8 @@ export const UnixUTCToDayString = (utcTime: number) => {
     const date = new Date(utcTime);
     return days[date.getDay()] + ' ' + date.getDate();
 }
+
+export const UnixUTCHourString = (utcTime: number) => {
+    const date = new Date(utcTime);
+    return date.getHours();
+}
