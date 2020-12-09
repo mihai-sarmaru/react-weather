@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
+import { Button, ButtonGroup } from '@material-ui/core';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import DetailWeather from '../../components/DetailWeather/DetailWeather';
 import FetchingWeather from '../../components/FetchingWeather/FetchingWeather';
@@ -76,8 +77,10 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     render() {
         return(
             <div>
-                <Link to='/forecast'>Forecast </Link>
-                <Link to='/hourly'> Hourly</Link>
+                <ButtonGroup variant='outlined'>
+                    <Button component={Link} to={'/hourly'}>Hourly</Button>
+                    <Button component={Link} to={'/forecast'}>Forecast</Button>
+                </ButtonGroup>
                 {this.onLoadWeather()}
             </div>
         );
