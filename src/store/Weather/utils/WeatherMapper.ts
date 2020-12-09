@@ -59,7 +59,7 @@ const mapIHourlyWeather = (hourlyWeather: any[]) => {
             dt: hourly.dt * 1000,
             temp: hourly.temp.toFixed(0),
             windSpeed: hourly.wind_speed.toFixed(0),
-            precipitation: hourly.pop * 100,
+            precipitation: +(hourly.pop * 100).toFixed(0),
             weather: mapIWeatherDescription(hourly.weather)
         } as IHourlyWeather);
     });
@@ -69,7 +69,7 @@ const mapIForecastWeather = (forecastWeather: any[]) => {
     return forecastWeather.map(forecast => {
         return ({
             dt: forecast.dt * 1000,
-            precipitation: forecast.pop * 100,
+            precipitation: +(forecast.pop * 100).toFixed(0),
             maxTemp: +forecast.temp.max.toFixed(0),
             minTemp: +forecast.temp.min.toFixed(0),
             windSpeed: +forecast.wind_speed.toFixed(0),
