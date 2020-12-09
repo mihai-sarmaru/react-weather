@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Label } from 'recharts';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import { UnixUTCHourString } from '../../utils/DateConverter';
 import chartType from './chartType';
@@ -27,24 +27,28 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
     });
 
     let chartDataKey = 'temp';
+    let chartDataUnit = '°C';
     switch (props.chartType) {
         case chartType.TEMPERATURE:
             chartDataKey = 'temp';
+            chartDataUnit = '°C';
             break;
         case chartType.WIND:
             chartDataKey = 'windSpeed';
+            chartDataUnit = 'km/h';
             break;
         case chartType.PRECIPITATION:
             chartDataKey = 'precipitation';
+            chartDataUnit = '(%)';
             break;
         default:
-            chartDataKey = 'temp';
+            chartDataUnit = '°C';
             break;
     }
 
     return(
         <React.Fragment>
-            <div style={{marginBottom: '30px'}}>
+            <div>
                 <IconButton
                     color={props.chartType === chartType.TEMPERATURE ? 'primary' : 'default'}
                     onClick={() => props.chartTypeHandler(chartType.TEMPERATURE)}>
@@ -62,10 +66,12 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
                 </IconButton>
             </div>
             <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-                <LineChart width={420} height={200} data={parsedData}>
+                <LineChart width={420} height={200} margin={{top: 35, left: 5}} data={parsedData}>
                     <XAxis dataKey='dt' tickLine={false} tickMargin={7}/>
-                    <YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}/>
-                    <CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false}/>
+                    <YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}>
+                        <Label position='top' offset={20} value={chartDataUnit} angle={0}/>
+                    </YAxis>
+                    <CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
                     <Line dataKey={chartDataKey} strokeWidth={2}/>
                 </LineChart>
             </div>
