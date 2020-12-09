@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
-import { LineChart, Line, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import { UnixUTCHourString } from '../../utils/DateConverter';
 import chartType from './chartType';
@@ -21,7 +21,8 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
             ...element,
             dt: UnixUTCHourString(element.dt)
         }
-        // if (index % 2 === 0)
+        // Chart complexity - element devided by 3
+        if (index % 3 === 0)
             parsedData.push(newElem);
     });
 
@@ -61,9 +62,10 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
                 </IconButton>
             </div>
             <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-                <LineChart width={400} height={200} data={parsedData}>
-                    <XAxis dataKey='dt'/>
-                    <YAxis dataKey={chartDataKey} width={30}/>
+                <LineChart width={420} height={200} data={parsedData}>
+                    <XAxis dataKey='dt' tickLine={false} tickMargin={7}/>
+                    <YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}/>
+                    <CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false}/>
                     <Line dataKey={chartDataKey} strokeWidth={2}/>
                 </LineChart>
             </div>
