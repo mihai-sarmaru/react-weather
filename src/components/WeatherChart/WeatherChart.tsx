@@ -8,7 +8,7 @@ import chartType from './chartType';
 
 interface WeatherChartProps {
     hourlyWeather: IHourlyWeather[];
-    chartType: (type: chartType) => void;
+    chartTypeHandler: (type: chartType) => void;
 }
 
 const WeatherChart: React.FC<WeatherChartProps> = (props) => {
@@ -34,13 +34,13 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
                 </LineChart>
             </div>
             <div>
-                <IconButton color='default' onClick={() => props.chartType(chartType.TEMPERATURE)}>
+                <IconButton color='default' onClick={() => props.chartTypeHandler(chartType.TEMPERATURE)}>
                     <WiIcon.WiThermometer size={32}/>
                 </IconButton>
-                <IconButton color='default' onClick={() => props.chartType(chartType.WIND)}>
+                <IconButton color='default' onClick={() => props.chartTypeHandler(chartType.WIND)}>
                     <WiIcon.WiStrongWind size={32}/>
                 </IconButton>
-                <IconButton color='default' onClick={() => props.chartType(chartType.PRECIPITATION)}>
+                <IconButton color='default' onClick={() => props.chartTypeHandler(chartType.PRECIPITATION)}>
                     <WiIcon.WiUmbrella size={32}/>
                 </IconButton>
             </div>

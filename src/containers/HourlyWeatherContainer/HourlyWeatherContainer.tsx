@@ -37,7 +37,7 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         if (this.props.hourlyWeather) {
             weatherChart = <WeatherChart
                             hourlyWeather={this.props.hourlyWeather}
-                            chartType={(type: chartType) => this.onChartButtonClick(type)} />;
+                            chartTypeHandler={(type: chartType) => this.onChartButtonClick(type)} />;
         }
         return weatherChart;
     }
