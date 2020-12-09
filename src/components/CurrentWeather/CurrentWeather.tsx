@@ -13,7 +13,7 @@ interface CurrentWeatherProps {
 
 const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
     return (
-        <Grid container spacing={2} style={{margin: '40px 0'}}>
+        <Grid container spacing={2} style={{marginBottom: '40px'}}>
             <Grid item xs={6}>
                 <div style={{textAlign: 'right'}}>
                     <WeatherIcon iconId={props.weatherIconId} size={140}/>

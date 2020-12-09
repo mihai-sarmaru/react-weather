@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import QuickNavigation from "./components/QuickNavigation/QuickNavigation";
 import CurrentWeatherContainer from "./containers/CurrentWeatherContainer/CurrentWeatherContainer";
 import ForecastContainer from "./containers/ForecastContainer/ForecastContainer";
 import HourlyWeatherContainer from "./containers/HourlyWeatherContainer/HourlyWeatherContainer";
@@ -7,7 +8,7 @@ import HourlyWeatherContainer from "./containers/HourlyWeatherContainer/HourlyWe
 function App() {
     return (
         <React.Fragment>
-            <h1>Hello React Weather</h1>
+            <QuickNavigation />
             <Switch>
                 <Route path='/hourly' component={HourlyWeatherContainer} />
                 <Route path='/forecast' component={ForecastContainer} />
