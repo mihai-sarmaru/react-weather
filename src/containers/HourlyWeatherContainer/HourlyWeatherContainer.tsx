@@ -44,7 +44,6 @@ class HourlyWeatherContainer extends Component<LinkProps> {
     }
 
     onChartButtonClick = (type: chartType) => {
-        console.log(type);
         this.setState((prevState: LocalState) => {
             return {
                 chartType: type
