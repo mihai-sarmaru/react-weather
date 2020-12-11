@@ -5,6 +5,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Label, ResponsiveContaine
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import { UnixUTCHourString } from '../../utils/DateConverter';
 import chartType from './chartType';
+import ChartTooltip from './ChartTooltip/ChartTooltip';
 
 interface WeatherChartProps {
     hourlyWeather: IHourlyWeather[];
@@ -77,7 +78,7 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
                             <Label position='top' offset={20} value={chartDataUnit}/>
                         </YAxis>
                         <CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
-                        <Tooltip />
+                        <Tooltip content={<ChartTooltip chartType={props.chartType} />} />
                         <Line dataKey={chartDataKey} strokeWidth={2}/>
                     </LineChart>
                 </ResponsiveContainer>
