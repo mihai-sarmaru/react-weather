@@ -5,12 +5,16 @@ class env {
     }
 
     public static getApiDefaultParams() {
-        return process.env.REACT_APP_API_PARAMS + this.buildKey();
+        return process.env.REACT_APP_API_PARAMS + this.buildApi(true);
     }
 
-    private static buildKey() {
-        const key = process.env.REACT_APP_API_KEY!;
-        return key.replace(key.substring(key.length - 2, key.length), '');
+    public static getApiLocK() {
+        return this.buildApi(false);
+    }
+
+    private static buildApi(main: boolean) {
+        const apiK = main ? process.env.REACT_APP_WK! : process.env.REACT_APP_LC!;
+        return apiK.replace(apiK.substring(apiK.length - 2, apiK.length), '');
     }
 
 }
