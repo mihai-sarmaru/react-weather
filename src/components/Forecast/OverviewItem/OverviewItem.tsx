@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, IconButton, Typography } from '@material-ui/core';
-import { Transition } from 'react-spring/renderprops';
+import { UnmountClosed } from 'react-collapse';
 import * as WiIcon from 'react-icons/wi'
 import * as Icon from 'react-icons/md'
 import WeatherIcon from '../../WeatherIcon/WeatherIcon';
@@ -40,18 +40,10 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
                     </IconButton>
                 </div>
             </Grid>
-            
-            <Transition
-                items={props.expanded}
-                from={{ opacity: 0 }}
-                enter={{ opacity: 1 }}
-                leave={{ opacity: 0 }}>
-                {show => show && (sprops => (
-                    <div style={sprops}>
-                        <OverviewDetailItem forecast={props.forecast}/>
-                    </div>
-                ))}
-            </Transition>
+
+            <UnmountClosed isOpened={props.expanded}>
+                <OverviewDetailItem forecast={props.forecast}/> 
+            </UnmountClosed>
         </Grid>
     );
 }
