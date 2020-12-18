@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
+import { withRouter } from "react-router-dom";
+import { RouteComponentProps } from "react-router";
 import { AppState } from '../../store/rootStore';
 import { IForecastWeather } from '../../store/Weather/models/Weather';
 import OverviewItem from '../../components/Forecast/OverviewItem/OverviewItem';
@@ -13,7 +15,7 @@ interface LinkStateProps {
 
 interface LinkDispatchProps {}
 
-type LinkProps = Props & LinkStateProps & LinkDispatchProps;
+type LinkProps = Props & LinkStateProps & LinkDispatchProps & RouteComponentProps;
 
 const mapStateToProps = (state: AppState): LinkStateProps => {
     return {
@@ -35,6 +37,8 @@ class ForecastContainer extends Component<LinkProps> {
         // prevent inifite loop
         if (this.props.forecast && this.state.expanded.length === 0) {
             this.initLocalState(this.props.forecast.length);
+        } else {
+            this.props.history.push('/');
         }
     }
 
@@ -82,4 +86,4 @@ class ForecastContainer extends Component<LinkProps> {
     }
 }
 
-export default connect(mapStateToProps)(ForecastContainer);
+export default withRouter(connect(mapStateToProps)(ForecastContainer));

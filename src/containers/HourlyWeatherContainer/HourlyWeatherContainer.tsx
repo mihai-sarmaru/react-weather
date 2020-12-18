@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
+import { RouteComponentProps } from "react-router";
 import FetchingWeather from '../../components/FetchingWeather/FetchingWeather';
 import chartType from '../../components/WeatherChart/chartType';
 import WeatherChart from '../../components/WeatherChart/WeatherChart';
@@ -14,7 +16,7 @@ interface LinkStateProps {
 
 interface LinkDispatchProps {}
 
-type LinkProps = Props & LinkStateProps & LinkDispatchProps;
+type LinkProps = Props & LinkStateProps & LinkDispatchProps & RouteComponentProps;
 
 const mapStateToProps = (state: AppState): LinkStateProps => {
     return {
@@ -30,6 +32,12 @@ class HourlyWeatherContainer extends Component<LinkProps> {
 
     state: LocalState = {
         chartType: chartType.TEMPERATURE
+    }
+
+    componentDidMount() {
+        if (!this.props.hourlyWeather) {
+            this.props.history.push('/');
+        }
     }
 
     fetchHourlyWeather = () => {
@@ -60,4 +68,4 @@ class HourlyWeatherContainer extends Component<LinkProps> {
     }
 }
 
-export default connect(mapStateToProps)(HourlyWeatherContainer);
+export default withRouter(connect(mapStateToProps)(HourlyWeatherContainer));
