@@ -5,7 +5,7 @@ import * as WiIcons from 'react-icons/wi';
 
 const QuickNavigation = () => {
     return(
-        <ButtonGroup variant='outlined' size='large' style={{margin: '40px 0'}}>
+        <ButtonGroup variant='outlined' style={{margin: '40px 0'}}>
             <Button startIcon={<WiIcons.WiThermometer />}
                 component={Link} to={'/'}>Now</Button>
             <Button startIcon={<WiIcons.WiTime4 />}
