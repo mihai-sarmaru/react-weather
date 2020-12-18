@@ -24,7 +24,7 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
                 </div>
             </Grid>
             <Grid item xs={8} md={6}>
-                <div style={{textAlign: 'left'}}>
+                <div style={{textAlign: 'left'}} onClick={props.expandClick}>
                     <Typography variant='h6' className='typography-primary'><strong>{UnixUTCToDayString(props.forecast.dt)}</strong></Typography>
                     <div style={{display: 'flex'}}>
                         <WiIcon.WiUmbrella size={20} color='#7d8b8e' />
