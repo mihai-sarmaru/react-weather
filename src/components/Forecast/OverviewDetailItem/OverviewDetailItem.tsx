@@ -16,36 +16,36 @@ const OverviewDetailItem: React.FC<OverviewDetailItemProps> = (props) => {
             <Grid item xs={10} md={11}>
                 
                 <div style={{textAlign: 'left', marginLeft: '8px', marginBottom: '20px'}}>
-                    <Typography variant='subtitle1'>{props.forecast.weather[0].description}</Typography>
+                    <Typography variant='subtitle1' className='typography-secondary'>{props.forecast.weather[0].description}</Typography>
 
                     <Grid container spacing={2} style={{marginTop: '15px'}}>
                         <Grid item xs={6} md={4} lg={3}>
-                            <Paper variant='outlined' >
+                            <Paper variant='outlined' style={{background: 'transparent'}} >
                                 <DetailItem itemType={DetailItemType.WIND} value={props.forecast.windSpeed}/>
                             </Paper>
                         </Grid>
                         <Grid item xs={6} md={4} lg={3}>
-                            <Paper variant='outlined' >
+                            <Paper variant='outlined' style={{background: 'transparent'}} >
                                 <DetailItem itemType={DetailItemType.CLOUD_COVER} value={props.forecast.clouds}/>
                             </Paper>
                         </Grid>
                         <Grid item xs={6} md={4} lg={3}>
-                            <Paper variant='outlined' >
+                            <Paper variant='outlined' style={{background: 'transparent'}} >
                                 <DetailItem itemType={DetailItemType.UV_INDEX} value={props.forecast.uvi}/>
                             </Paper>
                         </Grid>
                         <Grid item xs={6} md={4} lg={3}>
-                            <Paper variant='outlined' >
+                            <Paper variant='outlined' style={{background: 'transparent'}} >
                                 <DetailItem itemType={DetailItemType.PRESSURE} value={props.forecast.pressure}/>
                             </Paper>
                         </Grid>
                         <Grid item xs={6} md={4} lg={3}>
-                            <Paper variant='outlined' >
+                            <Paper variant='outlined' style={{background: 'transparent'}} >
                                 <DetailItem itemType={DetailItemType.SUNRISE} value={UnixUTCToHourMinuteString(props.forecast.sunrise)}/>
                             </Paper>
                         </Grid>
                         <Grid item xs={6} md={4} lg={3}>
-                            <Paper variant='outlined' >
+                            <Paper variant='outlined' style={{background: 'transparent'}} >
                                 <DetailItem itemType={DetailItemType.SUNSET} value={UnixUTCToHourMinuteString(props.forecast.sunset)}/>
                             </Paper>
                         </Grid>

@@ -16,7 +16,7 @@ interface OverviewItemProps {
 
 const OverviewItem: React.FC<OverviewItemProps> = (props) => {
     return (
-        <Grid container spacing={2} style={{margin: 'auto', width: '96%'}}>
+        <Grid container spacing={2} style={{margin: 'auto', width: '95%'}}>
             <Grid item xs={2} md={1}>
                 <div style={{textAlign: 'center'}}>
                     <WeatherIcon iconId={props.forecast.weather[0].id} size={58}/>
