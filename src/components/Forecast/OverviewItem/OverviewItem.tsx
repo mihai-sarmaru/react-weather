@@ -16,14 +16,15 @@ interface OverviewItemProps {
 
 const OverviewItem: React.FC<OverviewItemProps> = (props) => {
     return (
-        <Grid container spacing={2} style={{margin: 'auto', width: '95%'}}>
-            <Grid item xs={2} md={1}>
-                <div style={{textAlign: 'center'}}>
+        <React.Fragment>
+        <Grid container spacing={2} style={{margin: 'auto', width: '98%'}}>
+            <Grid item xs={2} md={3}>
+                <div style={{textAlign: 'right'}}>
                     <WeatherIcon iconId={props.forecast.weather[0].id} size={58}/>
                 </div>
             </Grid>
-            <Grid item xs={8} md={10}>
-                <div style={{textAlign: 'left'}}>
+            <Grid item xs={8} md={6}>
+                <div style={{textAlign: 'left'}} onClick={props.expandClick}>
                     <Typography variant='h6' className='typography-primary'><strong>{UnixUTCToDayString(props.forecast.dt)}</strong></Typography>
                     <div style={{display: 'flex'}}>
                         <WiIcon.WiUmbrella size={20} color='#7d8b8e' />
@@ -33,18 +34,19 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
                     </div>
                 </div>
             </Grid>
-            <Grid item xs={2} md={1}>
-                <div style={{textAlign: 'right'}}>
+            <Grid item xs={2} md={3}>
+                <div style={{textAlign: 'left'}}>
                     <IconButton onClick={props.expandClick}>
                         {props.expanded ? <Icon.MdExpandLess size={32}/> : <Icon.MdExpandMore size={32}/>}
                     </IconButton>
                 </div>
             </Grid>
 
+        </Grid>
             <UnmountClosed isOpened={props.expanded}>
                 <OverviewDetailItem forecast={props.forecast}/> 
             </UnmountClosed>
-        </Grid>
+        </React.Fragment>
     );
 }
 
