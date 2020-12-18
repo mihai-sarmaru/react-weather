@@ -38,7 +38,6 @@ export const fetchWeather = (lat: number, long: number) => {
         dispatch(requestWeather());
         axios.get('/' + env.getApiDefaultParams(), {params: {lat: lat, lon: long}})
             .then(response => { 
-                console.log(response.data);
                 dispatch(receiveWeather(mapIWeather(response.data)));
             })
             .catch(error => {
