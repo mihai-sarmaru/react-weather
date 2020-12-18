@@ -6,6 +6,13 @@ import { AppActions } from "./actions";
 
 const logger = createLogger();
 
+let middleware = [];
+if (process.env.NODE_ENV === 'development') {
+    middleware = [thunk as ThunkMiddleware<AppState, AppActions>, logger];
+} else {
+    middleware = [thunk as ThunkMiddleware<AppState, AppActions>];
+}
+
 export const rootReducer = combineReducers({
     weatherReducer
 });
@@ -14,5 +21,5 @@ export type AppState = ReturnType<typeof rootReducer>;
 
 export const store = createStore<AppState, AppActions, {}, {}>(
     rootReducer,
-    applyMiddleware(thunk as ThunkMiddleware<AppState, AppActions>, logger)
+    applyMiddleware(...middleware)
 );

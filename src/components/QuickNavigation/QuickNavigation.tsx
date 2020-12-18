@@ -1,13 +1,17 @@
 import { Button, ButtonGroup } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as WiIcons from 'react-icons/wi';
 
 const QuickNavigation = () => {
     return(
-        <ButtonGroup variant='outlined' style={{marginTop: '40px', marginBottom: '25px'}}>
-            <Button component={Link} to={'/'}>Now</Button>
-            <Button component={Link} to={'/hourly'}>Hourly</Button>
-            <Button component={Link} to={'/forecast'}>Forecast</Button>
+        <ButtonGroup variant='outlined' size='large' style={{margin: '40px 0'}}>
+            <Button startIcon={<WiIcons.WiThermometer />}
+                component={Link} to={'/'}>Now</Button>
+            <Button startIcon={<WiIcons.WiTime4 />}
+                component={Link} to={'/hourly'}>Hourly</Button>
+            <Button startIcon={<WiIcons.WiWindDeg />}
+                component={Link} to={'/forecast'}>Later</Button>
         </ButtonGroup>
     );
 }
