@@ -16,7 +16,7 @@ interface OverviewItemProps {
 
 const OverviewItem: React.FC<OverviewItemProps> = (props) => {
     return (
-        <Grid container spacing={2} style={{margin: 'auto', width: '96%'}}>
+        <Grid container spacing={2} style={{margin: 'auto', width: '95%'}}>
             <Grid item xs={2} md={1}>
                 <div style={{textAlign: 'center'}}>
                     <WeatherIcon iconId={props.forecast.weather[0].id} size={58}/>
@@ -24,12 +24,12 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
             </Grid>
             <Grid item xs={8} md={10}>
                 <div style={{textAlign: 'left'}}>
-                    <Typography variant='h6'><strong>{UnixUTCToDayString(props.forecast.dt)}</strong></Typography>
+                    <Typography variant='h6' className='typography-primary'><strong>{UnixUTCToDayString(props.forecast.dt)}</strong></Typography>
                     <div style={{display: 'flex'}}>
-                        <WiIcon.WiUmbrella size={20} />
-                        <Typography variant='subtitle2' style={{marginRight: '20px'}}>{props.forecast.precipitation} %</Typography>
-                        <WiIcon.WiThermometer size={20} />
-                        <Typography variant='subtitle2'>{props.forecast.maxTemp}° | {props.forecast.minTemp}°</Typography>
+                        <WiIcon.WiUmbrella size={20} color='#7d8b8e' />
+                        <Typography variant='subtitle2' className='typography-secondary' style={{marginRight: '20px'}}>{props.forecast.precipitation} %</Typography>
+                        <WiIcon.WiThermometer size={20} color='#86c3d6' />
+                        <Typography variant='subtitle2' className='typography-secondary'>{props.forecast.maxTemp}° | {props.forecast.minTemp}°</Typography>
                     </div>
                 </div>
             </Grid>

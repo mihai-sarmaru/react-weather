@@ -25,10 +25,10 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
                     <Spring
                         from={{number: 0}}
                         to={{number: props.temperature}}>
-                            {props => <Typography variant='h2'>{props.number.toFixed()}°</Typography> }
+                            {props => <Typography variant='h2' className='typography-primary'>{props.number.toFixed()}°</Typography> }
                     </Spring>
-                    <Typography variant='h6'>Feels like {props.feelsLike}°</Typography>
-                    <Typography variant='subtitle1'>{props.description}</Typography>
+                    <Typography variant='h6' className='typography-primary'>Feels like {props.feelsLike}°</Typography>
+                    <Typography variant='subtitle1' className='typography-secondary'>{props.description}</Typography>
                 </div>
             </Grid>
         </Grid>
