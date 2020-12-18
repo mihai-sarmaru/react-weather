@@ -79,8 +79,8 @@ const DetailItem: React.FC<DetailItemProps> = (props) => {
             </Grid>
             <Grid item xs={8}>
                 <div style={{textAlign: 'left'}}>
-                    <Typography variant='subtitle2'><strong>{itemValue}</strong></Typography>
-                    <Typography variant='body2'>{itemDescription}</Typography>
+                    <Typography variant='subtitle2' className='typography-primary'><strong>{itemValue}</strong></Typography>
+                    <Typography variant='body2' className='typography-secondary'>{itemDescription}</Typography>
                 </div>
             </Grid>
         </Grid>
