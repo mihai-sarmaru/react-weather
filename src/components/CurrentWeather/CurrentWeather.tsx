@@ -9,7 +9,8 @@ interface CurrentWeatherProps {
     temperature: number,
     feelsLike: number,
     description: string,
-    weatherIconId: number
+    weatherIconId: number,
+    day: boolean
 }
 
 const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
@@ -17,7 +18,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
         <Grid container spacing={2} style={{marginBottom: '40px', width: '98%'}}>
             <Grid item xs={6}>
                 <div style={{textAlign: 'right'}}>
-                    <WeatherIcon iconId={props.weatherIconId} size={140}/>
+                    <WeatherIcon iconId={props.weatherIconId} day={props.day} size={140}/>
                 </div>
             </Grid>
             <Grid item xs={6}>

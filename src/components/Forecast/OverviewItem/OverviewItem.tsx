@@ -20,7 +20,7 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
         <Grid container spacing={2} style={{margin: 'auto', width: '98%'}}>
             <Grid item xs={2} md={3}>
                 <div style={{textAlign: 'right'}}>
-                    <WeatherIcon iconId={props.forecast.weather[0].id} size={58}/>
+                    <WeatherIcon iconId={props.forecast.weather[0].id} day={true} size={58}/>
                 </div>
             </Grid>
             <Grid item xs={8} md={6}>
