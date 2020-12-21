@@ -13,3 +13,7 @@ export const UnixUTCHourString = (utcTime: number) => {
     const date = new Date(utcTime);
     return date.getHours();
 }
+
+export const UnixUTCDayIcon = (utcTime: number, sunrise: number, sunset: number) => {
+    return (utcTime > sunrise && utcTime < sunset); 
+}

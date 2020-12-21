@@ -9,6 +9,7 @@ import { AppActions } from '../../store/actions';
 import { AppState } from '../../store/rootStore';
 import { IWeather } from '../../store/Weather/models/Weather';
 import { fetchWeather } from '../../store/Weather/WeatherActions';
+import { UnixUTCDayIcon } from '../../utils/DateConverter';
 
 interface Props {}
 
@@ -60,7 +61,10 @@ class CurrentWeatherContainer extends Component<LinkProps> {
                         temperature={this.props.weather.currentWeather.temp}
                         feelsLike={this.props.weather.currentWeather.feelsLike}
                         description={this.props.weather.currentWeather.weather[0].description}
-                        weatherIconId={this.props.weather.currentWeather.weather[0].id} />
+                        weatherIconId={this.props.weather.currentWeather.weather[0].id}
+                        day={UnixUTCDayIcon(this.props.weather.currentWeather.dt,
+                            this.props.weather.currentWeather.sunrise,
+                            this.props.weather.currentWeather.sunset)} />
 
                 <DetailWeather
                     currentWeather={this.props.weather.currentWeather}
