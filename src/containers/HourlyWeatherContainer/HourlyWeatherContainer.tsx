@@ -8,6 +8,7 @@ import WeatherChart from '../../components/WeatherChart/WeatherChart';
 import { AppState } from '../../store/rootStore';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import HourlyList from '../../components/HourlyList/HourlyList';
+import { Button } from '@material-ui/core';
 
 interface Props {}
 
@@ -27,12 +28,14 @@ const mapStateToProps = (state: AppState): LinkStateProps => {
 
 interface LocalState {
     chartType: chartType;
+    moreInfo: boolean;
 }
 
 class HourlyWeatherContainer extends Component<LinkProps> {
 
     state: LocalState = {
-        chartType: chartType.TEMPERATURE
+        chartType: chartType.TEMPERATURE,
+        moreInfo: false
     }
 
     componentDidMount() {
@@ -56,7 +59,11 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         let hourlyDetail = null;
         if (this.props.hourlyWeather) {
             hourlyDetail = this.props.hourlyWeather.map((hourly, index) => {
-                return <HourlyList key={index} hourly={hourly} />
+                if (this.state.moreInfo) {
+                    return <HourlyList key={index} hourly={hourly} />
+                } else {
+                    return index < 3 ? <HourlyList key={index} hourly={hourly} /> : null;
+                }
             });
             hourlyDetail = <div style={{marginTop: '50px'}}>{hourlyDetail}</div>
         }
@@ -71,11 +78,22 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         });
     }
 
+    onMoretButtonClick = () => {
+        this.setState((prevState: LocalState) => {
+            if (!this.state.moreInfo) {
+                return {
+                    moreInfo: true
+                }
+            }
+        });
+    }
+
     render() {
         return (
             <div>
                 {this.fetchHourlyWeather()}
                 {this.fetchHourlyDetailWeather()}
+                <Button variant='outlined' size='small' style={{margin: '20px 0'}}>More</Button>
             </div>
         );
     }
