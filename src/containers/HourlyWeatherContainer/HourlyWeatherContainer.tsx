@@ -58,7 +58,9 @@ class HourlyWeatherContainer extends Component<LinkProps> {
     fetchHourlyDetailWeather = () => {
         let hourlyDetail = null;
         if (this.props.hourlyWeather) {
-            hourlyDetail = this.props.hourlyWeather.map((hourly, index) => {
+            hourlyDetail = this.props.hourlyWeather.filter((el, index) => {
+                return index !== 0;
+            }).map((hourly, index) => {
                 if (this.state.moreInfo) {
                     return index % 3 === 0 ? <HourlyList key={index} hourly={hourly} /> : null;
                 } else {
