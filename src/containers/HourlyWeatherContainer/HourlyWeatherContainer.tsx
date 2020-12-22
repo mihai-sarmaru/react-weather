@@ -7,6 +7,7 @@ import chartType from '../../components/WeatherChart/chartType';
 import WeatherChart from '../../components/WeatherChart/WeatherChart';
 import { AppState } from '../../store/rootStore';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
+import HourlyList from '../../components/HourlyList/HourlyList';
 
 interface Props {}
 
@@ -51,6 +52,17 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         return weatherChart;
     }
 
+    fetchHourlyDetailWeather = () => {
+        let hourlyDetail = null;
+        if (this.props.hourlyWeather) {
+            hourlyDetail = this.props.hourlyWeather.map((hourly, index) => {
+                return <HourlyList key={index} hourly={hourly} />
+            });
+            hourlyDetail = <div style={{marginTop: '50px'}}>{hourlyDetail}</div>
+        }
+        return hourlyDetail;
+    }
+
     onChartButtonClick = (type: chartType) => {
         this.setState((prevState: LocalState) => {
             return {
@@ -63,6 +75,7 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         return (
             <div>
                 {this.fetchHourlyWeather()}
+                {this.fetchHourlyDetailWeather()}
             </div>
         );
     }
