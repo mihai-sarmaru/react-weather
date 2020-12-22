@@ -78,14 +78,13 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         });
     }
 
-    onMoretButtonClick = () => {
+    onMoreButtonClick = () => {
         this.setState((prevState: LocalState) => {
-            if (!this.state.moreInfo) {
-                return {
-                    moreInfo: true
-                }
+            return {
+                moreInfo: !prevState.moreInfo
             }
         });
+        this.fetchHourlyDetailWeather();
     }
 
     render() {
@@ -93,7 +92,8 @@ class HourlyWeatherContainer extends Component<LinkProps> {
             <div>
                 {this.fetchHourlyWeather()}
                 {this.fetchHourlyDetailWeather()}
-                <Button variant='outlined' size='small' style={{margin: '20px 0'}}>More</Button>
+                <Button variant='outlined' size='small' style={{margin: '20px 0'}}
+                    onClick={this.onMoreButtonClick}>{this.state.moreInfo ? 'Less' : 'More'}</Button>
             </div>
         );
     }
