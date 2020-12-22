@@ -7,6 +7,9 @@ import chartType from '../../components/WeatherChart/chartType';
 import WeatherChart from '../../components/WeatherChart/WeatherChart';
 import { AppState } from '../../store/rootStore';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
+import HourlyList from '../../components/HourlyList/HourlyList';
+import { Button } from '@material-ui/core';
+import * as Icon from 'react-icons/md';
 
 interface Props {}
 
@@ -26,12 +29,14 @@ const mapStateToProps = (state: AppState): LinkStateProps => {
 
 interface LocalState {
     chartType: chartType;
+    moreInfo: boolean;
 }
 
 class HourlyWeatherContainer extends Component<LinkProps> {
 
     state: LocalState = {
-        chartType: chartType.TEMPERATURE
+        chartType: chartType.TEMPERATURE,
+        moreInfo: false
     }
 
     componentDidMount() {
@@ -51,6 +56,23 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         return weatherChart;
     }
 
+    fetchHourlyDetailWeather = () => {
+        let hourlyDetail = null;
+        if (this.props.hourlyWeather) {
+            hourlyDetail = this.props.hourlyWeather.filter((el, index) => {
+                return index !== 0;
+            }).map((hourly, index) => {
+                if (this.state.moreInfo) {
+                    return index % 3 === 0 ? <HourlyList key={index} hourly={hourly} /> : null;
+                } else {
+                    return index < 3 ? <HourlyList key={index} hourly={hourly} /> : null;
+                }
+            });
+            hourlyDetail = <div style={{marginTop: '50px'}}>{hourlyDetail}</div>
+        }
+        return hourlyDetail;
+    }
+
     onChartButtonClick = (type: chartType) => {
         this.setState((prevState: LocalState) => {
             return {
@@ -59,10 +81,25 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         });
     }
 
+    onMoreButtonClick = () => {
+        this.setState((prevState: LocalState) => {
+            return {
+                moreInfo: !prevState.moreInfo
+            }
+        });
+        this.fetchHourlyDetailWeather();
+    }
+
     render() {
         return (
             <div>
                 {this.fetchHourlyWeather()}
+                {this.fetchHourlyDetailWeather()}
+                <Button variant='outlined' size='small' style={{margin: '20px 0'}}
+                    onClick={this.onMoreButtonClick}>
+                        {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
+                        {this.state.moreInfo ? 'Less' : 'More'}
+                        </Button>
             </div>
         );
     }

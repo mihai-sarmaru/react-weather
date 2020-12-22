@@ -14,6 +14,11 @@ export const UnixUTCHourString = (utcTime: number) => {
     return date.getHours();
 }
 
+export const UnixUTCHourStringFakeMinutes = (utcTime: number) => {
+    const date = new Date(utcTime);
+    return date.getHours() + ':00';
+}
+
 export const UnixUTCDayIcon = (utcTime: number, sunrise: number, sunset: number) => {
     return (utcTime > sunrise && utcTime < sunset); 
 }

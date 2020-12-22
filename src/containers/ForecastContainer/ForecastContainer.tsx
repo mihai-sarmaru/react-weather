@@ -65,7 +65,9 @@ class ForecastContainer extends Component<LinkProps> {
     fetchWeatherForecast = () => {
         let overviewItems = [<FetchingWeather key={'fetching'} />];
         if (this.props.forecast) {
-            overviewItems = this.props.forecast.map( (item, index) => (
+            overviewItems = this.props.forecast.filter((el, index) => {
+                return index !== 0;
+            }).map((item, index) => (
                 <OverviewItem
                     key={item.dt}
                     forecast={item}
