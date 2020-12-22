@@ -22,14 +22,14 @@ const HourlyList: React.FC<HourlyListProps> = (props) => {
                 <Grid xs={1}>
                     <WeatherIcon iconId={props.hourly.weather[0].id} day={true} size={35} />
                 </Grid>
-                <Grid xs={4} style={{width: '100%'}} />
+                <Grid xs={3} style={{width: '100%'}} />
+                <Grid xs={3} style={{display: 'flex', justifyContent:'left'}}>
+                    <WiIcons.WiUmbrella size={25} color='#666' />
+                    <Typography variant='body1'>{props.hourly.precipitation}%</Typography>
+                </Grid>
                 <Grid xs={2} style={{display: 'flex', justifyContent:'left'}}>
                     <WiIcons.WiThermometer size={25} color='#86c3d6' />
                     <Typography variant='body1'>{props.hourly.temp}°</Typography>
-                </Grid>
-                <Grid xs={2} style={{display: 'flex', justifyContent:'left'}}>
-                    <WiIcons.WiUmbrella size={25} color='#666' />
-                    <Typography variant='body1'>{props.hourly.precipitation}%</Typography>
                 </Grid>
             </Grid>
         </div>
