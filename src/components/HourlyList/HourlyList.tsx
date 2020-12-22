@@ -4,6 +4,7 @@ import * as WiIcons from 'react-icons/wi';
 import WeatherIcon from '../WeatherIcon/WeatherIcon';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import { UnixUTCHourStringFakeMinutes } from '../../utils/DateConverter';
+import ClockIcon from '../ClockIcon/ClockIcon';
 
 interface HourlyListProps {
     hourly: IHourlyWeather;
@@ -15,7 +16,7 @@ const HourlyList: React.FC<HourlyListProps> = (props) => {
             <Grid xs={1} style={{width: '100%'}} />
             <Grid container spacing={2} style={{alignItems: 'center', margin: '3px 0', width: '90%'}}>
                 <Grid xs={3} style={{display: 'flex', justifyContent:'left'}}>
-                    <WiIcons.WiTime4 size={25} />
+                    <ClockIcon dt={props.hourly.dt} size={25} />
                     <Typography variant='body1'>{UnixUTCHourStringFakeMinutes(props.hourly.dt)}</Typography>
                 </Grid>
                 <Grid xs={1}>
