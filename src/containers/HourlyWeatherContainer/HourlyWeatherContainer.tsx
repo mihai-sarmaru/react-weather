@@ -9,6 +9,7 @@ import { AppState } from '../../store/rootStore';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import HourlyList from '../../components/HourlyList/HourlyList';
 import { Button } from '@material-ui/core';
+import * as Icon from 'react-icons/md';
 
 interface Props {}
 
@@ -95,7 +96,10 @@ class HourlyWeatherContainer extends Component<LinkProps> {
                 {this.fetchHourlyWeather()}
                 {this.fetchHourlyDetailWeather()}
                 <Button variant='outlined' size='small' style={{margin: '20px 0'}}
-                    onClick={this.onMoreButtonClick}>{this.state.moreInfo ? 'Less' : 'More'}</Button>
+                    onClick={this.onMoreButtonClick}>
+                        {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
+                        {this.state.moreInfo ? 'Less' : 'More'}
+                        </Button>
             </div>
         );
     }
