@@ -3,13 +3,13 @@ import * as Icon from 'react-icons/wi';
 import { UnixUTCHourString } from '../../utils/DateConverter';
 
 interface ClockIconProps {
-    dt: number;
+    dt: number | string;
     size?: number;
 }
 
 const ClockIcon: React.FC<ClockIconProps> = (props) => {
 
-    const hour = UnixUTCHourString(props.dt).toString();
+    const hour = typeof props.dt === 'number' ? UnixUTCHourString(+props.dt).toString() : props.dt;
     let hourIcon = <Icon.WiTime12 size={props.size} />
     
     if (hour === '0' || hour === '12') {
