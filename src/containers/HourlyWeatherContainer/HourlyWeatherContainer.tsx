@@ -68,9 +68,8 @@ class HourlyWeatherContainer extends Component<LinkProps> {
                     return index < 3 ? <HourlyList key={index} hourly={hourly} /> : null;
                 }
             });
-            hourlyDetail = <div style={{marginTop: '50px'}}>{hourlyDetail}</div>
         }
-        return hourlyDetail;
+        return <div style={{marginTop: '50px'}}>{hourlyDetail}</div>;
     }
 
     onChartButtonClick = (type: chartType) => {
