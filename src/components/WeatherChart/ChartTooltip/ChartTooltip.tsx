@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Paper, Typography } from '@material-ui/core';
-import * as FiIcons from 'react-icons/fi';
 import * as WiIcons from 'react-icons/wi';
 import chartType from '../chartType';
+import ClockIcon from '../../ClockIcon/ClockIcon';
 
 interface ChartTooltipProps {
     chartType: chartType;
@@ -41,7 +41,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
 
                 <Grid container spacing={3}>
                     <Grid item >
-                        <FiIcons.FiClock size={20} color='#000'/>
+                        <ClockIcon dt={(props.payload[0].payload.dt).toString()} size={20} />
                         <Typography><strong>{props.payload[0].payload.dt}:00</strong></Typography>
                     </Grid>
                     <Grid item>

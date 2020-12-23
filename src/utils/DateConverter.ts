@@ -22,3 +22,8 @@ export const UnixUTCHourStringFakeMinutes = (utcTime: number) => {
 export const UnixUTCDayIcon = (utcTime: number, sunrise: number, sunset: number) => {
     return (utcTime > sunrise && utcTime < sunset); 
 }
+
+export const UnixUTCToDayOfMonth = (utcTime: number) => {
+    const date = new Date(utcTime);
+    return date.getDate();
+}
