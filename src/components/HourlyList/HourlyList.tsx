@@ -14,7 +14,7 @@ interface HourlyListProps {
 const HourlyList: React.FC<HourlyListProps> = (props) => {
 
     let dayIcon = true;
-    for (const dayForecast of props.forecast) {
+    for (const dayForecast of props.forecast.slice(0, 3)) {
         if (UnixUTCToDayOfMonth(dayForecast.dt) === UnixUTCToDayOfMonth(props.hourly.dt)) {
             dayIcon = UnixUTCDayIcon(props.hourly.dt, dayForecast.sunrise, dayForecast.sunset);
         }
