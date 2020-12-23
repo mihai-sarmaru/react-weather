@@ -2,15 +2,24 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import * as WiIcons from 'react-icons/wi';
 import WeatherIcon from '../WeatherIcon/WeatherIcon';
-import { IHourlyWeather } from '../../store/Weather/models/Weather';
-import { UnixUTCHourStringFakeMinutes } from '../../utils/DateConverter';
+import { IHourlyWeather, IForecastWeather } from '../../store/Weather/models/Weather';
+import { UnixUTCHourStringFakeMinutes, UnixUTCToDayOfMonth, UnixUTCDayIcon } from '../../utils/DateConverter';
 import ClockIcon from '../ClockIcon/ClockIcon';
 
 interface HourlyListProps {
     hourly: IHourlyWeather;
+    forecast: IForecastWeather[];
 }
 
 const HourlyList: React.FC<HourlyListProps> = (props) => {
+
+    let dayIcon = true;
+    for (const dayForecast of props.forecast) {
+        if (UnixUTCToDayOfMonth(dayForecast.dt) === UnixUTCToDayOfMonth(props.hourly.dt)) {
+            dayIcon = UnixUTCDayIcon(props.hourly.dt, dayForecast.sunrise, dayForecast.sunset);
+        }
+    }
+
     return(
         <div style={{display: 'flex', justifyContent:'center', marginRight: '20px'}}>
             <Grid xs={1} style={{width: '100%'}} />
@@ -20,7 +29,7 @@ const HourlyList: React.FC<HourlyListProps> = (props) => {
                     <Typography variant='body1'>{UnixUTCHourStringFakeMinutes(props.hourly.dt)}</Typography>
                 </Grid>
                 <Grid xs={1}>
-                    <WeatherIcon iconId={props.hourly.weather[0].id} day={true} size={35} />
+                    <WeatherIcon iconId={props.hourly.weather[0].id} day={dayIcon} size={35} />
                 </Grid>
                 <Grid xs={3} style={{width: '100%'}} />
                 <Grid xs={3} style={{display: 'flex', justifyContent:'left'}}>

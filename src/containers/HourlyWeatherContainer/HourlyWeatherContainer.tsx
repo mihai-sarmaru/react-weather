@@ -6,7 +6,7 @@ import FetchingWeather from '../../components/FetchingWeather/FetchingWeather';
 import chartType from '../../components/WeatherChart/chartType';
 import WeatherChart from '../../components/WeatherChart/WeatherChart';
 import { AppState } from '../../store/rootStore';
-import { IHourlyWeather } from '../../store/Weather/models/Weather';
+import { IForecastWeather, IHourlyWeather } from '../../store/Weather/models/Weather';
 import HourlyList from '../../components/HourlyList/HourlyList';
 import { Button } from '@material-ui/core';
 import * as Icon from 'react-icons/md';
@@ -15,6 +15,7 @@ interface Props {}
 
 interface LinkStateProps {
     hourlyWeather: IHourlyWeather[];
+    forecastWeather: IForecastWeather[];
 }
 
 interface LinkDispatchProps {}
@@ -23,7 +24,8 @@ type LinkProps = Props & LinkStateProps & LinkDispatchProps & RouteComponentProp
 
 const mapStateToProps = (state: AppState): LinkStateProps => {
     return {
-        hourlyWeather: state.weatherReducer.weather.hourlyWeather
+        hourlyWeather: state.weatherReducer.weather.hourlyWeather,
+        forecastWeather: state.weatherReducer.weather.forecast
     }
 }
 
@@ -63,9 +65,9 @@ class HourlyWeatherContainer extends Component<LinkProps> {
                 return index !== 0;
             }).map((hourly, index) => {
                 if (this.state.moreInfo) {
-                    return index % 3 === 0 ? <HourlyList key={index} hourly={hourly} /> : null;
+                    return index % 3 === 0 ? <HourlyList key={index} hourly={hourly} forecast={this.props.forecastWeather} /> : null;
                 } else {
-                    return index < 3 ? <HourlyList key={index} hourly={hourly} /> : null;
+                    return index < 3 ? <HourlyList key={index} hourly={hourly} forecast={this.props.forecastWeather} /> : null;
                 }
             });
         }
