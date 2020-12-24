@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, IconButton } from '@material-ui/core';
+import { Grid, IconButton, Tooltip } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
 import * as Chart from 'recharts';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
@@ -50,21 +50,27 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
     return(
         <React.Fragment>
             <div>
-                <IconButton
-                    color={props.chartType === chartType.TEMPERATURE ? 'primary' : 'default'}
-                    onClick={() => props.chartTypeHandler(chartType.TEMPERATURE)}>
-                    <WiIcon.WiThermometer size={32}/>
-                </IconButton>
-                <IconButton
-                    color={props.chartType === chartType.WIND ? 'primary' : 'default'}
-                    onClick={() => props.chartTypeHandler(chartType.WIND)}>
-                    <WiIcon.WiStrongWind size={32}/>
-                </IconButton>
-                <IconButton
-                    color={props.chartType === chartType.PRECIPITATION ? 'primary' : 'default'}
-                    onClick={() => props.chartTypeHandler(chartType.PRECIPITATION)}>
-                    <WiIcon.WiUmbrella size={32}/>
-                </IconButton>
+                <Tooltip title='Temperature' >
+                    <IconButton
+                        color={props.chartType === chartType.TEMPERATURE ? 'primary' : 'default'}
+                        onClick={() => props.chartTypeHandler(chartType.TEMPERATURE)}>
+                        <WiIcon.WiThermometer size={32}/>
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title='Wind speed' >
+                    <IconButton
+                        color={props.chartType === chartType.WIND ? 'primary' : 'default'}
+                        onClick={() => props.chartTypeHandler(chartType.WIND)}>
+                        <WiIcon.WiStrongWind size={32}/>
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title='Precipitation' >
+                    <IconButton
+                        color={props.chartType === chartType.PRECIPITATION ? 'primary' : 'default'}
+                        onClick={() => props.chartTypeHandler(chartType.PRECIPITATION)}>
+                        <WiIcon.WiUmbrella size={32}/>
+                    </IconButton>
+                </Tooltip>
             </div>
             <Grid container style={{justifyContent:'center'}}>
                 <Grid md={2} />
