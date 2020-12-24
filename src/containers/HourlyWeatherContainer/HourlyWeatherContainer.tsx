@@ -10,12 +10,14 @@ import { IForecastWeather, IHourlyWeather } from '../../store/Weather/models/Wea
 import HourlyList from '../../components/HourlyList/HourlyList';
 import { Button } from '@material-ui/core';
 import * as Icon from 'react-icons/md';
+import { ILocalization } from '../../localization/model/localizationModel';
 
 interface Props {}
 
 interface LinkStateProps {
     hourlyWeather: IHourlyWeather[];
     forecastWeather: IForecastWeather[];
+    localization: ILocalization;
 }
 
 interface LinkDispatchProps {}
@@ -25,7 +27,8 @@ type LinkProps = Props & LinkStateProps & LinkDispatchProps & RouteComponentProp
 const mapStateToProps = (state: AppState): LinkStateProps => {
     return {
         hourlyWeather: state.weatherReducer.weather.hourlyWeather,
-        forecastWeather: state.weatherReducer.weather.forecast
+        forecastWeather: state.weatherReducer.weather.forecast,
+        localization: state.localizationReducer.language
     }
 }
 
@@ -99,7 +102,8 @@ class HourlyWeatherContainer extends Component<LinkProps> {
                 <Button variant='outlined' size='small' style={{margin: '20px 0'}}
                     onClick={this.onMoreButtonClick}>
                         {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
-                        {this.state.moreInfo ? 'Less' : 'More'}
+                        {this.state.moreInfo ? this.props.localization.language.get('toggle-less') :
+                                               this.props.localization.language.get('toggle-more')}
                         </Button>
             </div>
         );
