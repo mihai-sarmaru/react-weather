@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk, { ThunkMiddleware } from "redux-thunk";
 import { createLogger } from 'redux-logger';
 import { weatherReducer } from "./Weather/WeatherReducer";
+import { localizationReducer } from './Localization/LocalizationReducer';
 import { AppActions } from "./actions";
 
 const logger = createLogger();
@@ -14,7 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const rootReducer = combineReducers({
-    weatherReducer
+    weatherReducer, localizationReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
