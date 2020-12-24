@@ -2,8 +2,10 @@ import React from "react";
 import 'fontsource-roboto';
 import { Grid, Typography } from "@material-ui/core";
 import { Spring } from 'react-spring/renderprops';
+import { useSelector } from "react-redux";
 
 import WeatherIcon from '../WeatherIcon/WeatherIcon';
+import { AppState } from "../../store/rootStore";
 
 interface CurrentWeatherProps {
     temperature: number,
@@ -14,6 +16,9 @@ interface CurrentWeatherProps {
 }
 
 const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
+
+    const localization = useSelector((state: AppState) => state.localizationReducer.language);
+
     return (
         <Grid container spacing={2} style={{marginBottom: '40px', width: '98%'}}>
             <Grid item xs={6}>
@@ -28,7 +33,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
                         to={{number: props.temperature}}>
                             {props => <Typography variant='h2' className='typography-primary'>{props.number.toFixed()}°</Typography> }
                     </Spring>
-                    <Typography variant='h6' className='typography-primary'>Feels like {props.feelsLike}°</Typography>
+                    <Typography variant='h6' className='typography-primary'>{localization.language.get('current-feels')!} {props.feelsLike}°</Typography>
                     <Typography variant='subtitle1' className='typography-secondary'>{props.description}</Typography>
                 </div>
             </Grid>
