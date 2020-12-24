@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, IconButton } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Label, ResponsiveContainer, Tooltip } from 'recharts';
+import * as Chart from 'recharts';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
 import { UnixUTCHourString } from '../../utils/DateConverter';
 import chartType from './chartType';
@@ -69,21 +69,21 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
             <Grid container style={{justifyContent:'center'}}>
                 <Grid md={2} />
                 <Grid xs={12} md={8} style={{display: 'flex', justifyContent:'center'}}>
-                    <ResponsiveContainer width='95%' height={250}>
-                        <LineChart margin={{top: 35, left: 10, right: 10}} data={parsedData}>
-                            <XAxis dataKey='dt' tickLine={false} tick={<div/>}>
-                                <Label position='insideBottomLeft' offset={0} value='Now'/>
-                                <Label position='insideBottom' offset={0} value='24h'/>
-                                <Label position='insideBottomRight' offset={0} value='48h'/>
-                            </XAxis>
-                            <YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}>
-                                <Label position='top' offset={20} value={chartDataUnit}/>
-                            </YAxis>
-                            <CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
-                            <Tooltip content={<ChartTooltip chartType={props.chartType} />} />
-                            <Line dataKey={chartDataKey} strokeWidth={2}/>
-                        </LineChart>
-                    </ResponsiveContainer>
+                    <Chart.ResponsiveContainer width='95%' height={250}>
+                        <Chart.LineChart margin={{top: 35, left: 10, right: 10}} data={parsedData}>
+                            <Chart.XAxis dataKey='dt' tickLine={false} tick={<div/>}>
+                                <Chart.Label position='insideBottomLeft' offset={0} value='Now'/>
+                                <Chart.Label position='insideBottom' offset={0} value='24h'/>
+                                <Chart.Label position='insideBottomRight' offset={0} value='48h'/>
+                            </Chart.XAxis>
+                            <Chart.YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}>
+                                <Chart.Label position='top' offset={20} value={chartDataUnit}/>
+                            </Chart.YAxis>
+                            <Chart.CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
+                            <Chart.Tooltip content={<ChartTooltip chartType={props.chartType} />} />
+                            <Chart.Line dataKey={chartDataKey} strokeWidth={2}/>
+                        </Chart.LineChart>
+                    </Chart.ResponsiveContainer>
                 </Grid>
                 <Grid md={2} />
                 
