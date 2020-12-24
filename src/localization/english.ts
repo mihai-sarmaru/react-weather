@@ -39,9 +39,7 @@ languageMap.set('toggle-less', 'Less');
 // week days array
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const localization: ILocalization = {
+ export const localization: ILocalization = {
     language: languageMap,
     weekArray: weekDays
 }
-
-export default localization;

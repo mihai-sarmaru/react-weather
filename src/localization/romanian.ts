@@ -39,9 +39,7 @@ languageMap.set('toggle-less', 'Mai Putin');
 // week days array
 const weekDays = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
 
-const localization: ILocalization = {
+export const localization: ILocalization = {
     language: languageMap,
     weekArray: weekDays
 }
-
-export default localization;
