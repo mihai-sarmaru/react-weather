@@ -1,5 +1,6 @@
 import React from 'react';
-import { Drawer } from '@material-ui/core';
+import { Drawer, Grid } from '@material-ui/core';
+import LanguageOptions from '../LanguageOptions/LanguageOptions';
 
 interface OptionsDrawerProps {
     open: boolean;
@@ -9,7 +10,11 @@ interface OptionsDrawerProps {
 const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
     return (
         <Drawer anchor='top' open={props.open} onClose={props.onClose}>
-            <h1>Hello Drawer :)</h1>
+
+            <Grid container>
+                <LanguageOptions />
+            </Grid>
+
         </Drawer>
     );
 }
