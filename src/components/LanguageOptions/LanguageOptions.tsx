@@ -13,8 +13,9 @@ const LanguageOptions = () => {
     const dispatch = useDispatch<ThunkDispatch<AppState, {}, AppActions>>();
 
     const handleSelectedLanguage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = +(event.target as HTMLInputElement).value;
-        dispatch(changeLanguage(value === 0 ? 'english' : 'romanian'));
+        const value = +(event.target as HTMLInputElement).value === 0 ? 'english' : 'romanian';
+        dispatch(changeLanguage(value));
+        localStorage.setItem('localization', value);
     }
 
     return(
