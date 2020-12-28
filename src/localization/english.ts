@@ -2,6 +2,9 @@ import { ILocalization, Languages } from "./model/localizationModel";
 
 let languageMap = new Map<string, string>();
 
+// loading
+languageMap.set('loading', 'Fetching weather');
+
 // navigation
 languageMap.set('nav-now', 'Now');
 languageMap.set('nav-hourly', 'Hourly');
