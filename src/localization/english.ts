@@ -1,4 +1,4 @@
-import { ILocalization } from "./model/localizationModel";
+import { ILocalization, Languages } from "./model/localizationModel";
 
 let languageMap = new Map<string, string>();
 
@@ -44,7 +44,10 @@ languageMap.set('options-lang-ro', 'Romanian');
 // week days array
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
- export const localization: ILocalization = {
+const selectedLanguage = Languages.ENGLISH;
+
+export const localization: ILocalization = {
     language: languageMap,
-    weekArray: weekDays
+    weekArray: weekDays,
+    selected: selectedLanguage
 }
