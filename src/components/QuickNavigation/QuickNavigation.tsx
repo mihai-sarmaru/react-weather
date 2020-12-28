@@ -18,7 +18,6 @@ const QuickNavigation = () => {
     const [navState, setNavState] = useState<QuickNavigationLocalState>({drawer: false});
 
     const onOptionsButtonClick = () => {
-        console.log('entered')
         setNavState({drawer: !navState.drawer});
     }
     
