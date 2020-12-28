@@ -7,6 +7,8 @@ import WeatherIcon from '../../WeatherIcon/WeatherIcon';
 import OverviewDetailItem from '../OverviewDetailItem/OverviewDetailItem';
 import { IForecastWeather } from '../../../store/Weather/models/Weather';
 import { UnixUTCToDayString } from '../../../utils/DateConverter';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../../store/rootStore';
 
 interface OverviewItemProps {
     forecast: IForecastWeather;
@@ -15,6 +17,9 @@ interface OverviewItemProps {
 }
 
 const OverviewItem: React.FC<OverviewItemProps> = (props) => {
+
+    const localization = useSelector((state: AppState) => state.localizationReducer.language);
+
     return (
         <React.Fragment>
         <Grid container spacing={2} style={{margin: 'auto', width: '98%'}}>
@@ -25,7 +30,9 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
             </Grid>
             <Grid item xs={8} md={6}>
                 <div style={{textAlign: 'left'}} onClick={props.expandClick}>
-                    <Typography variant='h6' className='typography-primary'><strong>{UnixUTCToDayString(props.forecast.dt)}</strong></Typography>
+                    <Typography variant='h6' className='typography-primary'>
+                        <strong>{UnixUTCToDayString(props.forecast.dt, localization)}</strong>
+                    </Typography>
                     <div style={{display: 'flex'}}>
                         <WiIcon.WiUmbrella size={20} color='#7d8b8e' />
                         <Typography variant='subtitle2' className='typography-secondary' style={{marginRight: '20px'}}>{props.forecast.precipitation} %</Typography>
