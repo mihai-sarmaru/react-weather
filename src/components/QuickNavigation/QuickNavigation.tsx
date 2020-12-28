@@ -23,14 +23,14 @@ const QuickNavigation = () => {
     
     return(
         <React.Fragment>
-            <ButtonGroup variant='outlined' style={{margin: '40px 0'}}>
+            <ButtonGroup variant='outlined' size='small' style={{margin: '40px 0'}}>
                 <Button startIcon={<WiIcons.WiThermometer />}
                     component={Link} to={'/'}>{localization.language.get('nav-now')}</Button>
                 <Button startIcon={<WiIcons.WiTime4 />}
                     component={Link} to={'/hourly'}>{localization.language.get('nav-hourly')}</Button>
                 <Button startIcon={<WiIcons.WiWindDeg />}
                     component={Link} to={'/forecast'}>{localization.language.get('nav-later')}</Button>
-                <Button onClick={onOptionsButtonClick}><MdIcons.MdSettings /></Button>
+                <Button onClick={onOptionsButtonClick}><MdIcons.MdLanguage /></Button>
             </ButtonGroup>
             <OptionsDrawer open={navState.drawer} onClose={onOptionsButtonClick} />
         </React.Fragment>
