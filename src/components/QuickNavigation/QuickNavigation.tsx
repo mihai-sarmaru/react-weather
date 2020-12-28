@@ -31,7 +31,7 @@ const QuickNavigation = () => {
                     component={Link} to={'/hourly'}>{localization.language.get('nav-hourly')}</Button>
                 <Button startIcon={<WiIcons.WiWindDeg />}
                     component={Link} to={'/forecast'}>{localization.language.get('nav-later')}</Button>
-                <Button onClick={onOptionsButtonClick}><MdIcons.MdLanguage /></Button>
+                <Button onClick={onOptionsButtonClick}><MdIcons.MdSettings /></Button>
             </ButtonGroup>
             <OptionsDrawer open={navState.drawer} onClose={onOptionsButtonClick} />
         </React.Fragment>
