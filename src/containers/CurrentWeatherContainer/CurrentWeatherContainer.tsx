@@ -12,6 +12,7 @@ import { AppState } from '../../store/rootStore';
 import { IWeather } from '../../store/Weather/models/Weather';
 import { fetchWeather } from '../../store/Weather/WeatherActions';
 import { UnixUTCDayIcon } from '../../utils/DateConverter';
+import { regionRomania } from '../../localization/utils/coordinates';
 
 interface Props {}
 
@@ -44,27 +45,30 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, {}, AppActions>) =
 class CurrentWeatherContainer extends Component<LinkProps> {
 
     componentDidMount() {
-        this.getLocalization();
-
         if (!this.props.weather.currentWeather) {
             if ('geolocation' in navigator) {
                 navigator.geolocation.getCurrentPosition(pos => {
+                    // Set starting language based on position 
+                    const localLang = regionRomania(pos.coords.latitude, pos.coords.longitude) ? 'romanian' : 'english';
+                    this.setLocalization(localLang);
                     this.props.fetchWeather(pos.coords.latitude, pos.coords.longitude);
                 }, error => {
-                    // TODO: remove this when publishing
+                    // TODO: remove this when publishing autocomplete
                     console.log(error.message);
+                    this.setLocalization('romanian');
                     this.props.fetchWeather(+process.env.REACT_APP_DEFAULT_LAT!, +process.env.REACT_APP_DEFAULT_LONG!);
                 });
             }
         }
     }
 
-    getLocalization = () => {
+    setLocalization = (localLang: string) => {
         let language = localStorage.getItem('localization');
         if (language !== null) {
             this.props.changeLanguage(language);
         } else {
-            localStorage.setItem('localization', 'english');
+            localStorage.setItem('localization', localLang);
+            this.props.changeLanguage(localLang);
         }
     }
 
