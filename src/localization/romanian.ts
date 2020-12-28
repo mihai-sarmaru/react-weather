@@ -36,6 +36,11 @@ languageMap.set('chart-axis-48', '48 ore');
 languageMap.set('toggle-more', 'Mai Mult');
 languageMap.set('toggle-less', 'Mai Putin');
 
+// options
+languageMap.set('options-lang-title', 'Schimba limba');
+languageMap.set('options-lang-en', 'Engleza');
+languageMap.set('options-lang-ro', 'Romana');
+
 // week days array
 const weekDays = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
 

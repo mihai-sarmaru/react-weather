@@ -36,6 +36,11 @@ languageMap.set('chart-axis-48', '48h');
 languageMap.set('toggle-more', 'More');
 languageMap.set('toggle-less', 'Less');
 
+// options
+languageMap.set('options-lang-title', 'Weather language');
+languageMap.set('options-lang-en', 'English');
+languageMap.set('options-lang-ro', 'Romanian');
+
 // week days array
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
