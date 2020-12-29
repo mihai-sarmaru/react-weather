@@ -4,7 +4,7 @@ import Loading from "./components/Loading/Loading";
 import QuickNavigation from "./components/QuickNavigation/QuickNavigation";
 import CurrentWeatherContainer from "./containers/CurrentWeatherContainer/CurrentWeatherContainer";
 
-// Lazy load compoenents
+// Lazy load components
 const ForecastContainer = React.lazy(() => {
     return import("./containers/ForecastContainer/ForecastContainer");
 });
