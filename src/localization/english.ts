@@ -9,6 +9,7 @@ languageMap.set('loading', 'Fetching weather');
 languageMap.set('nav-now', 'Now');
 languageMap.set('nav-hourly', 'Hourly');
 languageMap.set('nav-later', 'Later');
+languageMap.set('nav-settings', 'Settings');
 
 // current weather
 languageMap.set('current-feels', 'Feels like');
