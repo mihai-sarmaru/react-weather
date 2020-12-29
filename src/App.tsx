@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import Loading from "./components/Loading/Loading";
 import QuickNavigation from "./components/QuickNavigation/QuickNavigation";
 import CurrentWeatherContainer from "./containers/CurrentWeatherContainer/CurrentWeatherContainer";
 
@@ -16,7 +17,7 @@ function App() {
     return (
         <React.Fragment>
             <QuickNavigation />
-            <Suspense fallback={<p>Lazy Loading</p>}>
+            <Suspense fallback={<Loading />}>
                 <Switch>
                     <Route path='/hourly' render={() => <HourlyWeatherContainer/>} />
                     <Route path='/forecast' render={() => <ForecastContainer/>} />
