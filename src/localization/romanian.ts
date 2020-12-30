@@ -9,6 +9,7 @@ languageMap.set('loading', 'Se incarca vremea');
 languageMap.set('nav-now', 'Acum');
 languageMap.set('nav-hourly', 'Urmeaza');
 languageMap.set('nav-later', 'Viitor');
+languageMap.set('nav-settings', 'Setari');
 
 // current weather
 languageMap.set('current-feels', 'Se simte');
