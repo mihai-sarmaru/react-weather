@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, IconButton, Tooltip } from '@material-ui/core';
+import { Grid, IconButton, Tooltip, Paper } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
 import * as Chart from 'recharts';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
@@ -53,54 +53,57 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
 
     return(
         <React.Fragment>
-            <div>
-                <Tooltip title={localization.language.get('chart-tooltip-temperature')!} >
-                    <IconButton
-                        color={props.chartType === chartType.TEMPERATURE ? 'primary' : 'default'}
-                        onClick={() => props.chartTypeHandler(chartType.TEMPERATURE)}>
-                        <WiIcon.WiThermometer size={32}/>
-                    </IconButton>
-                </Tooltip>
-                <Tooltip title={localization.language.get('chart-tooltip-wind')!} >
-                    <IconButton
-                        color={props.chartType === chartType.WIND ? 'primary' : 'default'}
-                        onClick={() => props.chartTypeHandler(chartType.WIND)}>
-                        <WiIcon.WiStrongWind size={32}/>
-                    </IconButton>
-                </Tooltip>
-                <Tooltip title={localization.language.get('chart-tooltip-precipitation')!} >
-                    <IconButton
-                        color={props.chartType === chartType.PRECIPITATION ? 'primary' : 'default'}
-                        onClick={() => props.chartTypeHandler(chartType.PRECIPITATION)}>
-                        <WiIcon.WiUmbrella size={32}/>
-                    </IconButton>
-                </Tooltip>
-            </div>
-            <Grid container style={{justifyContent:'center'}}>
-                <Grid md={2} />
-                <Grid xs={12} md={8} style={{display: 'flex', justifyContent:'center'}}>
-                    <Chart.ResponsiveContainer width='95%' height={250}>
-                        <Chart.LineChart margin={{top: 35, left: 10, right: 10}} data={parsedData}>
-                            <Chart.XAxis dataKey='dt' tickLine={false} tick={<div/>}>
-                                <Chart.Label position='insideBottomLeft' offset={0}
-                                    value={localization.language.get('chart-axis-now')!}/>
-                                <Chart.Label position='insideBottom' offset={0}
-                                    value={localization.language.get('chart-axis-24')!}/>
-                                <Chart.Label position='insideBottomRight' offset={0}
-                                    value={localization.language.get('chart-axis-48')!}/>
-                            </Chart.XAxis>
-                            <Chart.YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}>
-                                <Chart.Label position='top' offset={20} value={chartDataUnit}/>
-                            </Chart.YAxis>
-                            <Chart.CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
-                            <Chart.Tooltip content={<ChartTooltip chartType={props.chartType} />} />
-                            <Chart.Line dataKey={chartDataKey} strokeWidth={2}/>
-                        </Chart.LineChart>
-                    </Chart.ResponsiveContainer>
+            <Paper elevation={3} style={{margin: 'auto', width: '90%'}}>
+                <div style={{paddingTop: '10px'}}>
+                    <Tooltip title={localization.language.get('chart-tooltip-temperature')!} >
+                        <IconButton
+                            color={props.chartType === chartType.TEMPERATURE ? 'primary' : 'default'}
+                            onClick={() => props.chartTypeHandler(chartType.TEMPERATURE)}>
+                            <WiIcon.WiThermometer size={32}/>
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title={localization.language.get('chart-tooltip-wind')!} >
+                        <IconButton
+                            color={props.chartType === chartType.WIND ? 'primary' : 'default'}
+                            onClick={() => props.chartTypeHandler(chartType.WIND)}>
+                            <WiIcon.WiStrongWind size={32}/>
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title={localization.language.get('chart-tooltip-precipitation')!} >
+                        <IconButton
+                            color={props.chartType === chartType.PRECIPITATION ? 'primary' : 'default'}
+                            onClick={() => props.chartTypeHandler(chartType.PRECIPITATION)}>
+                            <WiIcon.WiUmbrella size={32}/>
+                        </IconButton>
+                    </Tooltip>
+                </div>
+
+                <Grid container style={{justifyContent:'center'}}>
+                    <Grid md={2} />
+                    <Grid xs={12} md={8} style={{display: 'flex', justifyContent:'center'}}>
+                        <Chart.ResponsiveContainer width='95%' height={250}>
+                            <Chart.LineChart margin={{top: 35, left: 10, right: 10, bottom: 20}} data={parsedData}>
+                                <Chart.XAxis dataKey='dt' tickLine={false} tick={<div/>}>
+                                    <Chart.Label position='insideBottomLeft' offset={0}
+                                        value={localization.language.get('chart-axis-now')!}/>
+                                    <Chart.Label position='insideBottom' offset={0}
+                                        value={localization.language.get('chart-axis-24')!}/>
+                                    <Chart.Label position='insideBottomRight' offset={0}
+                                        value={localization.language.get('chart-axis-48')!}/>
+                                </Chart.XAxis>
+                                <Chart.YAxis dataKey={chartDataKey} width={30} tickLine={false} axisLine={false}>
+                                    <Chart.Label position='top' offset={20} value={chartDataUnit}/>
+                                </Chart.YAxis>
+                                <Chart.CartesianGrid stroke="#eee" strokeDasharray='3 5' horizontal={false} />
+                                <Chart.Tooltip content={<ChartTooltip chartType={props.chartType} />} />
+                                <Chart.Line dataKey={chartDataKey} strokeWidth={2}/>
+                            </Chart.LineChart>
+                        </Chart.ResponsiveContainer>
+                    </Grid>
+                    <Grid md={2} />
                 </Grid>
-                <Grid md={2} />
-                
-            </Grid>
+            </Paper>
+            
         </React.Fragment>
     );
 }
