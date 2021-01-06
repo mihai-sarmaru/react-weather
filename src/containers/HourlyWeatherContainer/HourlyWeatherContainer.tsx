@@ -75,7 +75,7 @@ class HourlyWeatherContainer extends Component<LinkProps> {
             });
         }
         return <div style={{marginTop: '30px'}}>
-                <Paper elevation={3} style={{margin: 'auto', width: '90%'}}>
+                <Paper elevation={3} style={{margin: 'auto', padding: '10px 0', width: '90%'}}>
                     {hourlyDetail}
                 </Paper>
             </div>;
