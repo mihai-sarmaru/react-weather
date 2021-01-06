@@ -22,7 +22,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
 
     return (
         <Paper elevation={3} style={{margin: 'auto', width: '90%'}}>
-            <Grid container spacing={2} style={{marginBottom: '40px'}}>
+            <Grid container spacing={2} style={{marginTop: '0', marginBottom: '40px'}}>
                 <Grid item xs={6}>
                     <div style={{textAlign: 'right'}}>
                         <WeatherIcon iconId={props.weatherIconId} day={props.day}
