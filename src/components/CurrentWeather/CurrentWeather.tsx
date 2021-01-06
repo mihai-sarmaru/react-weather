@@ -1,6 +1,6 @@
 import React from "react";
 import 'fontsource-roboto';
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Paper } from "@material-ui/core";
 import { Spring } from 'react-spring/renderprops';
 import { useSelector } from "react-redux";
 
@@ -21,27 +21,29 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
 
     return (
-        <Grid container spacing={2} style={{marginBottom: '40px', width: '98%'}}>
-            <Grid item xs={6}>
-                <div style={{textAlign: 'right'}}>
-                    <WeatherIcon iconId={props.weatherIconId} day={props.day}
-                    size={localization.selected === Languages.ENGLISH ? 140 : 110}/>
-                </div>
+        <Paper elevation={3} style={{margin: 'auto', width: '90%'}}>
+            <Grid container spacing={2} style={{marginBottom: '40px'}}>
+                <Grid item xs={6}>
+                    <div style={{textAlign: 'right'}}>
+                        <WeatherIcon iconId={props.weatherIconId} day={props.day}
+                        size={localization.selected === Languages.ENGLISH ? 140 : 110}/>
+                    </div>
+                </Grid>
+                <Grid item xs={6}>
+                    <div style={{textAlign: 'left'}}>
+                        <Spring
+                            from={{number: 0}}
+                            to={{number: props.temperature}}>
+                                {props => <Typography variant='h2' className='typography-primary'>{props.number.toFixed()}°</Typography> }
+                        </Spring>
+                        <Typography variant='h6' className='typography-primary'>{localization.language.get('current-feels')!} {props.feelsLike}°</Typography>
+                        <Typography variant='subtitle1' className='typography-secondary'>
+                            {localization.selected === Languages.ENGLISH ? props.description : ''}
+                        </Typography>
+                    </div>
+                </Grid>
             </Grid>
-            <Grid item xs={6}>
-                <div style={{textAlign: 'left'}}>
-                    <Spring
-                        from={{number: 0}}
-                        to={{number: props.temperature}}>
-                            {props => <Typography variant='h2' className='typography-primary'>{props.number.toFixed()}°</Typography> }
-                    </Spring>
-                    <Typography variant='h6' className='typography-primary'>{localization.language.get('current-feels')!} {props.feelsLike}°</Typography>
-                    <Typography variant='subtitle1' className='typography-secondary'>
-                        {localization.selected === Languages.ENGLISH ? props.description : ''}
-                    </Typography>
-                </div>
-            </Grid>
-        </Grid>
+        </Paper>
     );
 };
 
