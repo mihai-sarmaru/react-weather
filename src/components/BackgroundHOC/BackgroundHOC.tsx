@@ -8,14 +8,19 @@ const BackgroundHOC: React.FC<BackgroundHOCProps> = (props) => {
     const bkgImage = 'images/default.jpg';
 
     return(
-        <div style={{ display: 'block', overflow: 'auto', minHeight: '100vh',
+        <React.Fragment>
+            <div className='fullscreen-image' style={{
                      backgroundImage: `url(${bkgImage})`,
                      backgroundPosition: 'center center',
                      backgroundAttachment: 'fixed',
                      backgroundSize: 'cover',
-                     backgroundRepeat: 'no-repeat'}}>
-            {props.children}
-        </div>
+                     backgroundRepeat: 'no-repeat',
+                     filter: 'blur(3px)'                     
+                     }}>
+            </div>
+            <div>{props.children}</div>
+        </React.Fragment>
+        
     );
 }
 

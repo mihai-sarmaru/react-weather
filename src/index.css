@@ -16,7 +16,16 @@ code {
 .paper-default {
   margin: auto;
   width: 90%;
-  opacity: 0.90;
+  opacity: 0.9;
+}
+
+.fullscreen-image {
+  display: block;
+  overflow: auto;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  right: 0;
 }
 
 .typography-primary {
