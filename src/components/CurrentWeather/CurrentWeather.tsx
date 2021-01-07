@@ -21,7 +21,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
 
     return (
-        <Paper elevation={3} style={{margin: 'auto', width: '90%'}}>
+        <Paper elevation={3} className='paper-default'>
             <Grid container spacing={2} style={{marginTop: '0', marginBottom: '40px'}}>
                 <Grid item xs={6}>
                     <div style={{textAlign: 'right'}}>

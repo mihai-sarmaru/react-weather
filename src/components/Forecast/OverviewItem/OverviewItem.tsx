@@ -21,7 +21,7 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
 
     return (
-        <Paper elevation={3} style={{margin: '0 auto 20px auto', width: '90%'}}>
+        <Paper elevation={3} className='paper-default' style={{margin: '0 auto 20px auto'}}>
             <Grid container spacing={2} style={{margin: 'auto', width: '95%'}}>
                 <Grid item xs={2} md={3}>
                     <div style={{textAlign: 'right', marginLeft: '-10px'}}>

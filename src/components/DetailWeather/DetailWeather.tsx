@@ -16,7 +16,7 @@ const DetailWeather: React.FC<DetailWeatherProps> = (props) => {
         <Spring from={{opacity: 0}} to={{opacity: 1}}>
                 { sprops => 
                     <div style={sprops}>
-                        <Paper elevation={3} style={{margin: 'auto', width: '90%'}}>
+                        <Paper elevation={3} className='paper-default'>
                             <div style={{margin: 'auto', width: '80%'}}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={6} md={4} lg={3}>

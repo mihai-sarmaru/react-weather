@@ -53,7 +53,7 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
 
     return(
         <React.Fragment>
-            <Paper elevation={3} style={{margin: 'auto', width: '90%'}}>
+            <Paper elevation={3} className='paper-default'>
                 <div style={{paddingTop: '10px'}}>
                     <Tooltip title={localization.language.get('chart-tooltip-temperature')!} >
                         <IconButton
