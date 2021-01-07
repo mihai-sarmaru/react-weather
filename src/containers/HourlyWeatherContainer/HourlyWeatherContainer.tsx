@@ -103,7 +103,7 @@ class HourlyWeatherContainer extends Component<LinkProps> {
             <div>
                 {this.fetchWeatherChart()}
                 {this.fetchHourlyDetailWeather()}
-                <Button variant='outlined' size='small' style={{margin: '30px 0'}}
+                <Button variant='outlined' size='small' style={{margin: '30px 0', background: 'white', opacity: '0.9'}}
                     onClick={this.onMoreButtonClick}>
                         {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
                         {this.state.moreInfo ? this.props.localization.language.get('toggle-less') :

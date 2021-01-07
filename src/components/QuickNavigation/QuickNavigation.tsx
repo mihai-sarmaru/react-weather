@@ -23,7 +23,7 @@ const QuickNavigation = () => {
     
     return(
         <React.Fragment>
-            <ButtonGroup variant='outlined' size='small' style={{margin: '40px 0'}}>
+            <ButtonGroup variant='outlined' size='small' style={{margin: '40px 0', background: 'white', opacity: '0.9'}}>
                 <Button startIcon={<WiIcons.WiThermometer />}
                     component={Link} to={'/'}>{localization.language.get('nav-now')}</Button>
                 <Button startIcon={<WiIcons.WiTime4 />}
