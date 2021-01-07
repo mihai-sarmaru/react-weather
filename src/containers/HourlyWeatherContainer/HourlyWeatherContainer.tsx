@@ -74,11 +74,7 @@ class HourlyWeatherContainer extends Component<LinkProps> {
                 }
             });
         }
-        return <div style={{marginTop: '30px'}}>
-                <Paper elevation={3} className='paper-default' style={{padding: '10px 0'}}>
-                    {hourlyDetail}
-                </Paper>
-            </div>;
+        return hourlyDetail;
     }
 
     onChartButtonClick = (type: chartType) => {
@@ -102,13 +98,19 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         return (
             <div>
                 {this.fetchWeatherChart()}
-                {this.fetchHourlyDetailWeather()}
-                <Button variant='outlined' size='small' style={{margin: '30px 0', background: 'white', opacity: '0.9'}}
-                    onClick={this.onMoreButtonClick}>
-                        {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
-                        {this.state.moreInfo ? this.props.localization.language.get('toggle-less') :
-                                               this.props.localization.language.get('toggle-more')}
+
+                <div style={{marginTop: '30px'}}>
+                    <Paper elevation={3} className='paper-default' style={{padding: '10px 0'}}>
+                        {this.fetchHourlyDetailWeather()}
+
+                        <Button variant='outlined' size='small' style={{margin: '10px 0', background: 'white'}}
+                            onClick={this.onMoreButtonClick}>
+                                {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
+                                {this.state.moreInfo ? this.props.localization.language.get('toggle-less') :
+                                                    this.props.localization.language.get('toggle-more')}
                         </Button>
+                    </Paper>
+                </div>
             </div>
         );
     }
