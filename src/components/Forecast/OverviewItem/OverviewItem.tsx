@@ -37,7 +37,7 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
                             <WiIcon.WiUmbrella size={20} color='#7d8b8e' />
                             <Typography variant='subtitle2' className='typography-secondary' style={{marginRight: '20px'}}>{props.forecast.precipitation} %</Typography>
                             <WiIcon.WiThermometer size={20} color='#86c3d6' />
-                            <Typography variant='subtitle2' className='typography-secondary'>{props.forecast.maxTemp}° | {props.forecast.minTemp}°</Typography>
+                            <Typography variant='subtitle2' className='typography-secondary'>{props.forecast.maxTemp}&deg; | {props.forecast.minTemp}&deg;</Typography>
                         </div>
                     </div>
                 </Grid>

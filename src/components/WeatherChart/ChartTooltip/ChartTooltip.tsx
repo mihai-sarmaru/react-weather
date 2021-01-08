@@ -17,7 +17,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
     if (props.active) {
         switch (props.chartType) {
             case chartType.TEMPERATURE:
-                tooltipMeasurement = props.payload[0].payload.temp + '°';
+                tooltipMeasurement = props.payload[0].payload.temp + String.fromCharCode(176);
                 tooltipMeasurementIcon = <WiIcons.WiThermometer size={20} color='#86c3d6'/>;
                 break;
             case chartType.WIND:
@@ -29,7 +29,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
                 tooltipMeasurementIcon = <WiIcons.WiUmbrella size={20} color='#666'/>;
                 break;
             default:
-                tooltipMeasurement = props.payload[0].payload.temp + '°';
+                tooltipMeasurement = props.payload[0].payload.temp + String.fromCharCode(176);
                 tooltipMeasurementIcon = <WiIcons.WiThermometer size={20} color='#86c3d6'/>;
                 break;
         }

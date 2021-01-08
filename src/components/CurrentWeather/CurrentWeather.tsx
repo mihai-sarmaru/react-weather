@@ -34,9 +34,9 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
                         <Spring
                             from={{number: 0}}
                             to={{number: props.temperature}}>
-                                {props => <Typography variant='h2' className='typography-primary'>{props.number.toFixed()}°</Typography> }
+                                {props => <Typography variant='h2' className='typography-primary'>{props.number.toFixed()}&deg;</Typography> }
                         </Spring>
-                        <Typography variant='h6' className='typography-primary'>{localization.language.get('current-feels')!} {props.feelsLike}°</Typography>
+                        <Typography variant='h6' className='typography-primary'>{localization.language.get('current-feels')!} {props.feelsLike}&deg;</Typography>
                         <Typography variant='subtitle1' className='typography-secondary'>
                             {localization.selected === Languages.ENGLISH ? props.description : ''}
                         </Typography>

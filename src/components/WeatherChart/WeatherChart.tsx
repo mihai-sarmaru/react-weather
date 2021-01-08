@@ -32,11 +32,11 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
     });
 
     let chartDataKey = 'temp';
-    let chartDataUnit = '°C';
+    let chartDataUnit = String.fromCharCode(176) + 'C';
     switch (props.chartType) {
         case chartType.TEMPERATURE:
             chartDataKey = 'temp';
-            chartDataUnit = '°C';
+            chartDataUnit = String.fromCharCode(176) + 'C';
             break;
         case chartType.WIND:
             chartDataKey = 'windSpeed';
@@ -47,7 +47,7 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
             chartDataUnit = '(%)';
             break;
         default:
-            chartDataUnit = '°C';
+            chartDataUnit = String.fromCharCode(176) + 'C';
             break;
     }
 
