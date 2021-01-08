@@ -6,11 +6,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #f3f3f3;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.box-default {
+  background-color: #ffffff;
+  margin: auto;
+  width: 90%;
+}
+
+.fullscreen-image {
+  display: block;
+  overflow: auto;
+  height: 200px;
 }
 
 .typography-primary {

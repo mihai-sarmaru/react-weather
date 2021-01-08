@@ -17,16 +17,15 @@ const OverviewDetailItem: React.FC<OverviewDetailItemProps> = (props) => {
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
     
     return(
-        <Grid container spacing={2} style={{width: '100%'}}>
-            <Grid item xs={2} sm={2} md={3}/>
-            <Grid item xs={10} sm={9} md={6}>
+        <Grid container spacing={2} style={{alignItems: 'center', justifyContent: 'center', width: '100%'}}>
+            <Grid item xs={12} sm={8} md={6}>
                 
-                <div style={{textAlign: 'left', marginLeft: '10px', marginBottom: '20px'}}>
+                <div style={{textAlign: 'left', marginLeft: '15px', marginBottom: '5px'}}>
                     <Typography variant='subtitle1' className='typography-secondary'>
                         {localization.selected === Languages.ENGLISH ? props.forecast.weather[0].description : ''}
                     </Typography>
 
-                    <Grid container spacing={2} style={{marginTop: '15px'}}>
+                    <Grid container spacing={1} style={{marginTop: '15px'}}>
                         <Grid item xs={6} md={4} lg={3}>
                             <Paper variant='outlined' style={{background: 'transparent'}} >
                                 <DetailItem itemType={DetailItemType.WIND} value={props.forecast.windSpeed}/>
@@ -61,8 +60,6 @@ const OverviewDetailItem: React.FC<OverviewDetailItemProps> = (props) => {
                 </div>
 
             </Grid>
-
-            <Grid item xs={1} sm={1} md={3} style={{width: '100%'}}/>
         </Grid>
     );
 }

@@ -8,7 +8,7 @@ import WeatherChart from '../../components/WeatherChart/WeatherChart';
 import { AppState } from '../../store/rootStore';
 import { IForecastWeather, IHourlyWeather } from '../../store/Weather/models/Weather';
 import HourlyList from '../../components/HourlyList/HourlyList';
-import { Button } from '@material-ui/core';
+import { Button, Box } from '@material-ui/core';
 import * as Icon from 'react-icons/md';
 import { ILocalization } from '../../localization/model/localizationModel';
 
@@ -50,7 +50,7 @@ class HourlyWeatherContainer extends Component<LinkProps> {
         }
     }
 
-    fetchHourlyWeather = () => {
+    fetchWeatherChart = () => {
         let weatherChart = <FetchingWeather key={'fetching'} />;
         if (this.props.hourlyWeather) {
             weatherChart = <WeatherChart
@@ -74,7 +74,7 @@ class HourlyWeatherContainer extends Component<LinkProps> {
                 }
             });
         }
-        return <div style={{marginTop: '50px'}}>{hourlyDetail}</div>;
+        return hourlyDetail;
     }
 
     onChartButtonClick = (type: chartType) => {
@@ -97,14 +97,20 @@ class HourlyWeatherContainer extends Component<LinkProps> {
     render() {
         return (
             <div>
-                {this.fetchHourlyWeather()}
-                {this.fetchHourlyDetailWeather()}
-                <Button variant='outlined' size='small' style={{margin: '20px 0'}}
-                    onClick={this.onMoreButtonClick}>
-                        {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
-                        {this.state.moreInfo ? this.props.localization.language.get('toggle-less') :
-                                               this.props.localization.language.get('toggle-more')}
+                {this.fetchWeatherChart()}
+
+                <div style={{marginTop: '20px'}}>
+                    <Box borderRadius={16} className='box-default' style={{padding: '10px 0', marginBottom: '20px'}}>
+                        {this.fetchHourlyDetailWeather()}
+
+                        <Button variant='outlined' size='small' style={{margin: '10px 0', background: 'white'}}
+                            onClick={this.onMoreButtonClick}>
+                                {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
+                                {this.state.moreInfo ? this.props.localization.language.get('toggle-less') :
+                                                    this.props.localization.language.get('toggle-more')}
                         </Button>
+                    </Box>
+                </div>
             </div>
         );
     }

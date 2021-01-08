@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import Loading from "./components/Loading/Loading";
 import QuickNavigation from "./components/QuickNavigation/QuickNavigation";
+import BackgroundHOC from "./components/BackgroundHOC/BackgroundHOC";
 import CurrentWeatherContainer from "./containers/CurrentWeatherContainer/CurrentWeatherContainer";
 
 // Lazy load components
@@ -16,7 +17,9 @@ const HourlyWeatherContainer = React.lazy(() => {
 function App() {
     return (
         <React.Fragment>
-            <QuickNavigation />
+            <BackgroundHOC>
+                <QuickNavigation />
+            </BackgroundHOC>
             <Suspense fallback={<Loading />}>
                 <Switch>
                     <Route path='/hourly' render={() => <HourlyWeatherContainer/>} />
