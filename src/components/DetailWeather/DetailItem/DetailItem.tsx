@@ -52,7 +52,7 @@ const DetailItem: React.FC<DetailItemProps> = (props) => {
             break;
         case DetailItemType.DEW_POINT:
             itemIcon = <Icon.WiThermometerInternal size={42} color='#86c3d6' />
-            itemValue = props.value + ' °';
+            itemValue = props.value + ' ' + String.fromCharCode(176);
             itemDescription = localization.language.get('detail-dew')!;
             break;
         case DetailItemType.VISIBILITY:

@@ -31,7 +31,7 @@ const mapICurrentWeather = (current: any) => {
         sunrise: current.sunrise * 1000,
         sunset: current.sunset * 1000,
         temp: current.temp.toFixed(0),
-        feelsLike: current.feels_like.toFixed(0) === -0 ? 0 : current.feels_like.toFixed(0),
+        feelsLike: current.feels_like.toFixed(0) === '-0' ? 0 : current.feels_like.toFixed(0),
         pressure: current.pressure,
         humidity: current.humidity,
         dewPoint: current.dew_point.toFixed(0),

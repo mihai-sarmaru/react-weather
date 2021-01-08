@@ -38,7 +38,7 @@ const HourlyList: React.FC<HourlyListProps> = (props) => {
                 </Grid>
                 <Grid xs={2} md={4} style={{display: 'flex', justifyContent:'left'}}>
                     <WiIcons.WiThermometer size={25} color='#86c3d6' />
-                    <Typography variant='body1'>{props.hourly.temp}°</Typography>
+                    <Typography variant='body1'>{props.hourly.temp}&deg;</Typography>
                 </Grid>
             </Grid>
         </div>

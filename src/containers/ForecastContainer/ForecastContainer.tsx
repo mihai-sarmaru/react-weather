@@ -6,6 +6,7 @@ import { AppState } from '../../store/rootStore';
 import { IForecastWeather } from '../../store/Weather/models/Weather';
 import OverviewItem from '../../components/Forecast/OverviewItem/OverviewItem';
 import FetchingWeather from '../../components/FetchingWeather/FetchingWeather';
+import { Spring } from 'react-spring/renderprops';
 
 interface Props {}
 
@@ -68,11 +69,16 @@ class ForecastContainer extends Component<LinkProps> {
             overviewItems = this.props.forecast.filter((el, index) => {
                 return index !== 0;
             }).map((item, index) => (
-                <OverviewItem
-                    key={item.dt}
-                    forecast={item}
-                    expanded={this.state.expanded[index]}
-                    expandClick={() => this.onExpandClick(index)}/>
+                <Spring key={item.dt} from={{opacity: 0}} to={{opacity: 1}} delay={index * 200}>
+                    { sprops =>
+                        <div style={sprops}>
+                            <OverviewItem
+                                forecast={item}
+                                expanded={this.state.expanded[index]}
+                                expandClick={() => this.onExpandClick(index)}/>
+                        </div>
+                    }
+                </Spring>
                 )
             );
         }

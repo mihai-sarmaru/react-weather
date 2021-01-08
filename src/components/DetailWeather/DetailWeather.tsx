@@ -13,7 +13,7 @@ interface DetailWeatherProps {
 
 const DetailWeather: React.FC<DetailWeatherProps> = (props) => {
     return (
-        <Spring from={{opacity: 0}} to={{opacity: 1}}>
+        <Spring from={{opacity: 0}} to={{opacity: 1}} delay={200}>
                 { sprops => 
                     <div style={sprops}>
                         <Box borderRadius={16} className='box-default'>
