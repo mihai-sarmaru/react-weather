@@ -11,6 +11,7 @@ import HourlyList from '../../components/HourlyList/HourlyList';
 import { Button, Box } from '@material-ui/core';
 import * as Icon from 'react-icons/md';
 import { ILocalization } from '../../localization/model/localizationModel';
+import { Spring } from 'react-spring/renderprops';
 
 interface Props {}
 
@@ -100,16 +101,22 @@ class HourlyWeatherContainer extends Component<LinkProps> {
                 {this.fetchWeatherChart()}
 
                 <div style={{marginTop: '20px'}}>
-                    <Box borderRadius={16} className='box-default' style={{padding: '10px 0', marginBottom: '20px'}}>
-                        {this.fetchHourlyDetailWeather()}
+                    <Spring from={{opacity: 0}} to={{opacity: 1}} delay={200}>
+                        { sprops => 
+                            <div style={sprops}>
+                                <Box borderRadius={16} className='box-default' style={{padding: '10px 0', marginBottom: '20px'}}>
+                                    {this.fetchHourlyDetailWeather()}
 
-                        <Button variant='outlined' size='small' style={{margin: '10px 0', background: 'white'}}
-                            onClick={this.onMoreButtonClick}>
-                                {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
-                                {this.state.moreInfo ? this.props.localization.language.get('toggle-less') :
-                                                    this.props.localization.language.get('toggle-more')}
-                        </Button>
-                    </Box>
+                                    <Button variant='outlined' size='small' style={{margin: '10px 0', background: 'white'}}
+                                        onClick={this.onMoreButtonClick}>
+                                            {this.state.moreInfo ? <Icon.MdUnfoldLess /> : <Icon.MdUnfoldMore />}
+                                            {this.state.moreInfo ? this.props.localization.language.get('toggle-less') :
+                                                                this.props.localization.language.get('toggle-more')}
+                                    </Button>
+                                </Box>
+                            </div>
+                        }
+                    </Spring>
                 </div>
             </div>
         );
