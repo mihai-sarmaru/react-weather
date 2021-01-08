@@ -45,6 +45,10 @@ languageMap.set('options-lang-title', 'Weather language');
 languageMap.set('options-lang-en', 'English');
 languageMap.set('options-lang-ro', 'Romanian');
 
+// about
+languageMap.set('about-built', 'Built with ');
+languageMap.set('about-by', ' by ');
+
 // week days array
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 

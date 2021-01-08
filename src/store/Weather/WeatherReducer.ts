@@ -8,7 +8,7 @@ interface WeatherState {
 }
 
 const initialState: WeatherState = {
-    loading: false,
+    loading: true,
     error: '',
     weather: {} as IWeather
 }
