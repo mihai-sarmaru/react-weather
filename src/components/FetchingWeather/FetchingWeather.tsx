@@ -7,7 +7,7 @@ const FetchingWeather = () => {
 
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
 
-    return <div style={{margin: '50px 0'}}>
+    return <div style={{marginTop: '300px'}}>
         <CircularProgress />
         <Typography variant='subtitle1'>{localization.language.get('loading')}</Typography>
     </div>;
