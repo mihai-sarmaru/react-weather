@@ -19,16 +19,15 @@ function App() {
         <React.Fragment>
             <BackgroundHOC>
                 <QuickNavigation />
-                <Suspense fallback={<Loading />}>
-                    <Switch>
-                        <Route path='/hourly' render={() => <HourlyWeatherContainer/>} />
-                        <Route path='/forecast' render={() => <ForecastContainer/>} />
-                        <Route path='/' component={CurrentWeatherContainer} />
-                        <Redirect to='/' />
-                    </Switch>
-                </Suspense>
             </BackgroundHOC>
-            
+            <Suspense fallback={<Loading />}>
+                <Switch>
+                    <Route path='/hourly' render={() => <HourlyWeatherContainer/>} />
+                    <Route path='/forecast' render={() => <ForecastContainer/>} />
+                    <Route path='/' component={CurrentWeatherContainer} />
+                    <Redirect to='/' />
+                </Switch>
+            </Suspense>
         </React.Fragment>
     );
 }

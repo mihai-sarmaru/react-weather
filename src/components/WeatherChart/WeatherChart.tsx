@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, IconButton, Tooltip, Paper } from '@material-ui/core';
+import { Grid, IconButton, Tooltip, Box } from '@material-ui/core';
 import * as WiIcon from 'react-icons/wi'
 import * as Chart from 'recharts';
 import { IHourlyWeather } from '../../store/Weather/models/Weather';
@@ -53,7 +53,7 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
 
     return(
         <React.Fragment>
-            <Paper elevation={3} className='paper-default'>
+            <Box borderRadius={16} className='box-default' style={{marginTop: '20px'}}>
                 <div style={{paddingTop: '10px'}}>
                     <Tooltip title={localization.language.get('chart-tooltip-temperature')!} >
                         <IconButton
@@ -102,7 +102,7 @@ const WeatherChart: React.FC<WeatherChartProps> = (props) => {
                     </Grid>
                     <Grid md={2} />
                 </Grid>
-            </Paper>
+            </Box>
             
         </React.Fragment>
     );

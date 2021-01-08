@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import DetailItem from './DetailItem/DetailItem';
 import DetailItemType from './DetailItem/DetailItemTypes';
 import { ICurrentWeather } from '../../store/Weather/models/Weather';
@@ -16,8 +16,8 @@ const DetailWeather: React.FC<DetailWeatherProps> = (props) => {
         <Spring from={{opacity: 0}} to={{opacity: 1}}>
                 { sprops => 
                     <div style={sprops}>
-                        <Paper elevation={3} className='paper-default'>
-                            <div style={{margin: 'auto', width: '80%'}}>
+                        <Box borderRadius={16} className='box-default'>
+                            <div style={{margin: '0 auto 30px auto', width: '80%'}}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={6} md={4} lg={3}>
                                         <DetailItem itemType={DetailItemType.PRECIPITATION_CHANCE} value={props.precipitation}/>
@@ -51,7 +51,7 @@ const DetailWeather: React.FC<DetailWeatherProps> = (props) => {
                                     </Grid>
                                 </Grid>
                             </div>
-                        </Paper>
+                        </Box>
                     </div>
                 }
         </Spring>

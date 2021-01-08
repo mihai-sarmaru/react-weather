@@ -1,6 +1,6 @@
 import React from "react";
 import 'fontsource-roboto';
-import { Grid, Typography, Paper } from "@material-ui/core";
+import { Grid, Typography, Box } from "@material-ui/core";
 import { Spring } from 'react-spring/renderprops';
 import { useSelector } from "react-redux";
 
@@ -21,8 +21,8 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
 
     return (
-        <Paper elevation={3} className='paper-default'>
-            <Grid container spacing={2} style={{marginTop: '0', marginBottom: '40px'}}>
+        <Box borderRadius={16} className='box-default'>
+            <Grid container spacing={2} style={{marginTop: '20px', marginBottom: '30px'}}>
                 <Grid item xs={6}>
                     <div style={{textAlign: 'right'}}>
                         <WeatherIcon iconId={props.weatherIconId} day={props.day}
@@ -43,7 +43,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
                     </div>
                 </Grid>
             </Grid>
-        </Paper>
+        </Box>
     );
 };
 

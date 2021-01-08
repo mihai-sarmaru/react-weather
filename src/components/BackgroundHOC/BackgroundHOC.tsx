@@ -1,8 +1,6 @@
 import React from 'react';
 
-interface BackgroundHOCProps {
-
-}
+interface BackgroundHOCProps {}
 
 const BackgroundHOC: React.FC<BackgroundHOCProps> = (props) => {
     const bkgImage = 'images/default.jpg';
@@ -10,15 +8,13 @@ const BackgroundHOC: React.FC<BackgroundHOCProps> = (props) => {
     return(
         <React.Fragment>
             <div className='fullscreen-image' style={{
-                     backgroundImage: `url(${bkgImage})`,
-                     backgroundPosition: 'center center',
-                     backgroundAttachment: 'fixed',
-                     backgroundSize: 'cover',
-                     backgroundRepeat: 'no-repeat',
-                     filter: 'blur(3px)'                     
-                     }}>
+                    backgroundImage: `url(${bkgImage})`,
+                    backgroundPosition: 'center center',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    }}>
+                {props.children}
             </div>
-            <div>{props.children}</div>
         </React.Fragment>
         
     );

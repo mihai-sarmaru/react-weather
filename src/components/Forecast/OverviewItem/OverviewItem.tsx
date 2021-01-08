@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, IconButton, Typography, Paper } from '@material-ui/core';
+import { Grid, IconButton, Typography, Box } from '@material-ui/core';
 import { UnmountClosed } from 'react-collapse';
 import * as WiIcon from 'react-icons/wi'
 import * as Icon from 'react-icons/md'
@@ -21,7 +21,7 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
 
     return (
-        <Paper elevation={3} className='paper-default' style={{margin: '0 auto 20px auto'}}>
+        <Box borderRadius={16} className='box-default' style={{margin: '20px auto'}}>
             <Grid container spacing={2} style={{margin: 'auto', width: '95%'}}>
                 <Grid item xs={2} md={3}>
                     <div style={{textAlign: 'right', marginLeft: '-10px'}}>
@@ -53,7 +53,7 @@ const OverviewItem: React.FC<OverviewItemProps> = (props) => {
             <UnmountClosed isOpened={props.expanded}>
                 <OverviewDetailItem forecast={props.forecast}/> 
             </UnmountClosed>
-        </Paper>
+        </Box>
     );
 }
 
