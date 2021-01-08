@@ -45,6 +45,10 @@ languageMap.set('options-lang-title', 'Schimbă limba');
 languageMap.set('options-lang-en', 'Engleză');
 languageMap.set('options-lang-ro', 'Romană');
 
+// about
+languageMap.set('about-built', 'Construit cu ');
+languageMap.set('about-by', ' de ');
+
 // week days array
 const weekDays = ['Duminică', 'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'];
 
