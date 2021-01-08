@@ -3,33 +3,33 @@ import { ILocalization, Languages } from "./model/localizationModel";
 let languageMap = new Map<string, string>();
 
 // loading
-languageMap.set('loading', 'Se incarca vremea');
+languageMap.set('loading', 'Se incarcă vremea');
 
 // navigation
 languageMap.set('nav-now', 'Acum');
-languageMap.set('nav-hourly', 'Urmeaza');
+languageMap.set('nav-hourly', 'Urmează');
 languageMap.set('nav-later', 'Viitor');
-languageMap.set('nav-settings', 'Setari');
+languageMap.set('nav-settings', 'Setări');
 
 // current weather
 languageMap.set('current-feels', 'Se simte');
 
 // detail weather
-languageMap.set('detail-chance', 'Sanse');
-languageMap.set('detail-wind', 'Vant');
+languageMap.set('detail-chance', 'Șanse');
+languageMap.set('detail-wind', 'Vânt');
 languageMap.set('detail-uv', 'Index UV');
 languageMap.set('detail-cloud', 'Acoperire');
 languageMap.set('detail-pressure', 'Presiune');
 languageMap.set('detail-humidity', 'Umiditate');
 languageMap.set('detail-dew', 'Condens');
-languageMap.set('detail-visibility', 'Visibilitate');
-languageMap.set('detail-sunrise', 'Rasarit');
+languageMap.set('detail-visibility', 'Vizibilitate');
+languageMap.set('detail-sunrise', 'Răsărit');
 languageMap.set('detail-sunset', 'Apus');
 
 // chart tooltip
-languageMap.set('chart-tooltip-temperature', 'Temperatura');
-languageMap.set('chart-tooltip-wind', 'Vant');
-languageMap.set('chart-tooltip-precipitation', 'Precipitatie');
+languageMap.set('chart-tooltip-temperature', 'Temperatură');
+languageMap.set('chart-tooltip-wind', 'Vânt');
+languageMap.set('chart-tooltip-precipitation', 'Precipitație');
 
 // chart X axis
 languageMap.set('chart-axis-now', 'Acum');
@@ -38,15 +38,15 @@ languageMap.set('chart-axis-48', '48 ore');
 
 // more less toggle button
 languageMap.set('toggle-more', 'Mai Mult');
-languageMap.set('toggle-less', 'Mai Putin');
+languageMap.set('toggle-less', 'Mai Puțin');
 
 // options
-languageMap.set('options-lang-title', 'Schimba limba');
-languageMap.set('options-lang-en', 'Engleza');
-languageMap.set('options-lang-ro', 'Romana');
+languageMap.set('options-lang-title', 'Schimbă limba');
+languageMap.set('options-lang-en', 'Engleză');
+languageMap.set('options-lang-ro', 'Romană');
 
 // week days array
-const weekDays = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
+const weekDays = ['Duminică', 'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'];
 
 const selectedLanguage = Languages.ROMANIAN;
 
