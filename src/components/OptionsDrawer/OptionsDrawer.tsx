@@ -1,6 +1,7 @@
 import React from 'react';
 import { Drawer, Grid, Box } from '@material-ui/core';
 import LanguageOptions from '../LanguageOptions/LanguageOptions';
+import About from '../About/About';
 
 interface OptionsDrawerProps {
     open: boolean;
@@ -16,6 +17,7 @@ const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
                     <LanguageOptions />
                 </Box>
                 <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
+                    <About />
                 </Box>
             </Grid>
 
