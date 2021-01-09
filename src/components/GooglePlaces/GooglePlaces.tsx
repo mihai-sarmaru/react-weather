@@ -8,14 +8,21 @@ const GooglePlaces = () => {
 
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
 
+    const onLocationSelected = (result: any) => {
+        console.log(result);
+    }
+
     return(
         <div>
             <GooglePlacesAutocomplete apiKey={env.default.getApiLocK()}
                 minLengthAutocomplete={3}
                 debounce={500}
+                autocompletionRequest={{
+                    types: ["geocode"]
+                }}
                 selectProps={{
                     placeholder: `${localization.language.get('search-placeholder')}`,
-                    onChange: (result: any) => console.log(result)
+                    onChange: onLocationSelected
                 }} />
         </div>
     );
