@@ -40,6 +40,9 @@ languageMap.set('chart-axis-48', '48h');
 languageMap.set('toggle-more', 'More');
 languageMap.set('toggle-less', 'Less');
 
+// search
+languageMap.set('search-placeholder', 'Search...');
+
 // options
 languageMap.set('options-lang-title', 'Weather language');
 languageMap.set('options-lang-en', 'English');
