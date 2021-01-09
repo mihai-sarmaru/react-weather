@@ -14,13 +14,24 @@ export const AddLocationToLocalStorage = async (locationLabel: string) => {
     let locations: Location[] = [];
     if (localStorageLocations !== null) {
         locations = JSON.parse(localStorageLocations) as Location[];
-        if (locations.length >= 3) locations.pop();
-        locations.unshift(location);
+        if (!locationExists(locationLabel, locations)) {
+            if (locations.length >= 3) locations.pop();
+            locations.unshift(location);
+        }
     } else {
         locations.push(location);
     }
 
-    localStorage.setItem('locations', JSON.stringify(locations));
+    if (!locationExists(locationLabel, locations)) {
+        localStorage.setItem('locations', JSON.stringify(locations));
+    }
+}
+
+const locationExists = (locationLabel: string, locations: Location[]) => {
+    for (const loc of locations) {
+        if (locationLabel === loc.name) return true;
+    }
+    return false;
 }
 
 const getLocation = async (label: string): Promise<Location> => {
@@ -29,7 +40,6 @@ const getLocation = async (label: string): Promise<Location> => {
         geocodeByAddress(label)
             .then(results => getLatLng(results[0]))
             .then(({ lat, lng }) => {
-                console.log('Successfully got latitude and longitude', { lat, lng });
                 resolve({name: label, lat: lat, long: lng});
             });
 
