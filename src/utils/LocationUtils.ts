@@ -1,6 +1,5 @@
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 
-
 export interface Location {
     name: string;
     lat: number;
@@ -29,11 +28,17 @@ export const addLocationToLocalStorage = async (locationLabel: string) => {
     if (!locExists) {
         localStorage.setItem('locations', JSON.stringify(locations));
     }
+
+    addToCurrentLocation(location);
 }
 
 export const getLocationsFromStorage = (): null | Location[] => {
     const localStorageLocations = localStorage.getItem('locations');
     return localStorageLocations !== null ? JSON.parse(localStorageLocations) as Location[] : null;
+}
+
+const addToCurrentLocation = (location: Location) => {
+    localStorage.setItem('current_location', JSON.stringify(location));
 }
 
 const locationExists = (locationLabel: string, locations: Location[]) => {
