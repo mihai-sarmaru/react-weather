@@ -12,19 +12,28 @@ export const addLocationToLocalStorage = async (locationLabel: string) => {
     const location = await getLocation(locationLabel);
 
     let locations: Location[] = [];
+    let locExists = true;
+
     if (localStorageLocations !== null) {
         locations = JSON.parse(localStorageLocations) as Location[];
         if (!locationExists(locationLabel, locations)) {
+            locExists = false;
             if (locations.length >= 3) locations.pop();
             locations.unshift(location);
         }
     } else {
         locations.push(location);
+        locExists = false;
     }
 
-    if (!locationExists(locationLabel, locations)) {
+    if (!locExists) {
         localStorage.setItem('locations', JSON.stringify(locations));
     }
+}
+
+export const getLocationsFromStorage = (): null | Location[] => {
+    const localStorageLocations = localStorage.getItem('locations');
+    return localStorageLocations !== null ? JSON.parse(localStorageLocations) as Location[] : null;
 }
 
 const locationExists = (locationLabel: string, locations: Location[]) => {
