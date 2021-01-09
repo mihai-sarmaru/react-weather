@@ -7,7 +7,7 @@ export interface Location {
     long: number;
 }
 
-export const AddLocationToLocalStorage = async (locationLabel: string) => {
+export const addLocationToLocalStorage = async (locationLabel: string) => {
     const localStorageLocations = localStorage.getItem('locations');
     const location = await getLocation(locationLabel);
 
