@@ -13,8 +13,9 @@ export const AddLocationToLocalStorage = async (locationLabel: string) => {
 
     let locations: Location[] = [];
     if (localStorageLocations !== null) {
-        locations = JSON.parse(localStorageLocations);
-        locations.push(location);
+        locations = JSON.parse(localStorageLocations) as Location[];
+        if (locations.length >= 3) locations.pop();
+        locations.unshift(location);
     } else {
         locations.push(location);
     }
