@@ -3,6 +3,7 @@ import { Drawer, Grid, Box } from '@material-ui/core';
 import LanguageOptions from '../LanguageOptions/LanguageOptions';
 import About from '../About/About';
 import GooglePlaces from '../GooglePlaces/GooglePlaces';
+import LastLocations from '../LastLocations/LastLocations';
 
 interface OptionsDrawerProps {
     open: boolean;
@@ -17,6 +18,9 @@ const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
             <Grid container style={{background: '#f3f3f3'}}>
                 <Box borderRadius={16} className='box-default' style={{margin: '20px auto'}}>
                     <GooglePlaces />
+                </Box>
+                <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
+                    <LastLocations />
                 </Box>
                 <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
                     <LanguageOptions />
