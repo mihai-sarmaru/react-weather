@@ -1,7 +1,7 @@
 import { IForecastWeather, IHourlyWeather, IWeather, IWeatherDescription } from "../models/Weather"
 
-export const mapIWeather = (weather: any): IWeather => {
-    const coords = mapIWeatherCoordinates(weather);
+export const mapIWeather = (weather: any, locationName = ''): IWeather => {
+    const coords = mapIWeatherCoordinates(weather, locationName);
     const current = mapICurrentWeather(weather.current);
     const hourly = mapIHourlyWeather(weather.hourly);
     const fcst = mapIForecastWeather(weather.daily);
@@ -16,11 +16,12 @@ export const mapIWeather = (weather: any): IWeather => {
     return convertedWeather;
 }
 
-const mapIWeatherCoordinates = (coord: any) => {
+const mapIWeatherCoordinates = (coord: any, locationName: string) => {
     return {
         latitude: coord.lat,
         longitude: coord.lon,
-        timezoneOffset: coord.timezone_offset * 1000
+        timezoneOffset: coord.timezone_offset * 1000,
+        locationName: locationName
     }
 }
 
