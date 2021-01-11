@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../store/rootStore';
 import { getRandomWeatherImage } from '../../utils/ImageUtil';
 
-interface BackgroundHOCProps {}
+interface BackgroundWithLocationHOCProps {}
 
-const BackgroundHOC: React.FC<BackgroundHOCProps> = (props) => {
+const BackgroundWithLocationHOC: React.FC<BackgroundWithLocationHOCProps> = (props) => {
 
     const currentWeather = useSelector((state: AppState) => state.weatherReducer.weather);
     const [weatherImage, setweatherImage] = useState('');
@@ -39,4 +39,4 @@ const BackgroundHOC: React.FC<BackgroundHOCProps> = (props) => {
     );
 }
 
-export default BackgroundHOC;
+export default BackgroundWithLocationHOC;
