@@ -26,7 +26,7 @@ const QuickNavigation = () => {
             <Tooltip title={localization.language.get('nav-settings')!} >
                 <IconButton 
                     style={{backgroundColor: '#ffffff', opacity: '0.9',
-                        position: 'absolute', top: '0', left: '0', margin: '5px'}}
+                        position: 'absolute', top: '0', left: '0', margin: '15px'}}
                     onClick={onOptionsButtonClick}>
                     <MdIcons.MdMenu size={18}/>
                 </IconButton>
