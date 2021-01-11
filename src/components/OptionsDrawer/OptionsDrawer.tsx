@@ -13,23 +13,23 @@ interface OptionsDrawerProps {
 const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
 
     return (
-        <Drawer anchor='top' open={props.open} onClose={props.onClose}>
-
-            <Grid container style={{background: '#f3f3f3'}}>
-                <Box borderRadius={16} className='box-default' style={{margin: '20px auto'}}>
-                    <GooglePlaces />
-                </Box>
-                <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
-                    <LastLocations />
-                </Box>
-                <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
-                    <LanguageOptions />
-                </Box>
-                <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
-                    <About />
-                </Box>
-            </Grid>
-
+        <Drawer anchor='left' open={props.open} onClose={props.onClose} >
+            <div style={{background: '#f3f3f3', height: '100%'}}>
+                <Grid container style={{width: '300px'}}>
+                    <Box borderRadius={16} className='box-default' style={{margin: '20px auto'}}>
+                        <GooglePlaces />
+                    </Box>
+                    <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
+                        <LastLocations />
+                    </Box>
+                    <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
+                        <LanguageOptions />
+                    </Box>
+                    <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
+                        <About />
+                    </Box>
+                </Grid>
+            </div>
         </Drawer>
     );
 }

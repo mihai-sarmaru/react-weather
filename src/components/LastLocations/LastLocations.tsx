@@ -6,7 +6,7 @@ const LastLocations = () => {
     const locations = getLocationsFromStorage();
 
     return(
-        <div>
+        <div style={{textAlign: 'left', paddingLeft: '20px'}}>
             {locations === null ? null : locations.map((loc, index) => {
                 return <p key={index}>{loc.name}</p>
             })}
