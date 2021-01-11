@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store/rootStore';
@@ -9,12 +10,14 @@ const BackgroundHOC: React.FC<BackgroundHOCProps> = (props) => {
 
     const currentWeather = useSelector((state: AppState) => state.weatherReducer.weather);
     const [weatherImage, setweatherImage] = useState('');
+    const [weatherLocation, setWeatherLocation] = useState('');
     
     useEffect(() => {
         if (currentWeather.currentWeather !== undefined) {
             setweatherImage(getRandomWeatherImage(currentWeather.currentWeather.weather[0].id));
+            setWeatherLocation(currentWeather.coordinates.locationName);
         }
-    },[currentWeather.currentWeather]);
+    },[currentWeather.currentWeather, currentWeather.coordinates]);
 
     return(
         <React.Fragment>
@@ -24,7 +27,13 @@ const BackgroundHOC: React.FC<BackgroundHOCProps> = (props) => {
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
                     }}>
-                {props.children}
+                <div>
+                    {props.children}
+                    <div style={{marginTop: '15px'}}>
+                        <Typography variant='subtitle2' style={{color: '#ffffff'}}>{weatherLocation}</Typography>
+                    </div>
+                </div>
+                
             </div>
         </React.Fragment>
     );
