@@ -6,6 +6,11 @@ export interface Location {
     long: number;
 }
 
+export const addLocationToLocalStorageAndRefresh = async (locationLabel: string) => {
+    await addLocationToLocalStorage (locationLabel);
+    window.location.reload();
+}
+
 export const addLocationToLocalStorage = async (locationLabel: string) => {
     const localStorageLocations = localStorage.getItem('locations');
     const location = await getLocation(locationLabel);
