@@ -46,16 +46,16 @@ const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
 
             <div style={{background: '#f3f3f3', height: '100%'}}>
                 <Grid container style={{width: '300px', marginTop: '50px'}}>
-                    <Box borderRadius={16} className='box-default' style={{margin: '20px auto'}}>
+                    <Box borderRadius={16} className='box-default' style={{margin: '20px auto 10px auto'}}>
                         <GooglePlaces />
                     </Box>
-                    <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
+                    <Box borderRadius={16} className='box-default' style={{margin: '10px auto'}}>
                         <LastLocations />
                     </Box>
-                    <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
+                    <Box borderRadius={16} className='box-default' style={{margin: '10px auto'}}>
                         <LanguageOptions />
                     </Box>
-                    <Box borderRadius={16} className='box-default' style={{margin: '0 auto 20px auto'}}>
+                    <Box borderRadius={16} className='box-default' style={{margin: '10px auto'}}>
                         <About />
                     </Box>
                 </Grid>

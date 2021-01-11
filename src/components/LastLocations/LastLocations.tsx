@@ -13,7 +13,7 @@ const LastLocations = () => {
     }
 
     return(
-        <div style={{textAlign: 'left', padding: '10px 20px'}}>
+        <div style={locations === null ? {display: 'none'} : {textAlign: 'left', padding: '10px 20px'}}>
             {locations === null ? null : locations.map((loc, index) => {
                 return <div style={{display: 'flex', justifyContent: 'left', alignItems: 'center'}}>
                         <Icons.MdLocationOn className='typography-secondary' /> 
