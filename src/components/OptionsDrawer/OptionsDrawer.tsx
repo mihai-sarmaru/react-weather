@@ -25,6 +25,15 @@ const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
                 </IconButton>
             </Tooltip>
 
+            <Tooltip title='Current Location' >
+                <IconButton 
+                    style={{backgroundColor: '#ffffff',
+                        position: 'absolute', top: '0', right: '0', margin: '15px'}}
+                    onClick={props.onClose} >
+                    <MdIcons.MdMyLocation size={18}/>
+                </IconButton>
+            </Tooltip>
+
             <div style={{background: '#f3f3f3', height: '100%'}}>
                 <Grid container style={{width: '300px', marginTop: '50px'}}>
                     <Box borderRadius={16} className='box-default' style={{margin: '20px auto'}}>
