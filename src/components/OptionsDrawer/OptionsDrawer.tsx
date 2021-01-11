@@ -5,6 +5,8 @@ import LanguageOptions from '../LanguageOptions/LanguageOptions';
 import About from '../About/About';
 import GooglePlaces from '../GooglePlaces/GooglePlaces';
 import LastLocations from '../LastLocations/LastLocations';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../store/rootStore';
 
 interface OptionsDrawerProps {
     open: boolean;
@@ -13,10 +15,12 @@ interface OptionsDrawerProps {
 
 const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
 
+    const localization = useSelector((state: AppState) => state.localizationReducer.language);
+
     return (
         <Drawer anchor='left' open={props.open} onClose={props.onClose} >
 
-            <Tooltip title='Back' >
+            <Tooltip title={localization.language.get('drawer-back')!} >
                 <IconButton 
                     style={{backgroundColor: '#ffffff',
                         position: 'absolute', top: '0', left: '0', margin: '15px'}}
@@ -25,7 +29,7 @@ const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
                 </IconButton>
             </Tooltip>
 
-            <Tooltip title='Current Location' >
+            <Tooltip title={localization.language.get('drawer-location')!} >
                 <IconButton 
                     style={{backgroundColor: '#ffffff',
                         position: 'absolute', top: '0', right: '0', margin: '15px'}}

@@ -11,6 +11,10 @@ languageMap.set('nav-hourly', 'Hourly');
 languageMap.set('nav-later', 'Later');
 languageMap.set('nav-settings', 'Settings');
 
+// drawer
+languageMap.set('drawer-back', 'Back');
+languageMap.set('drawer-location', 'Current location');
+
 // current weather
 languageMap.set('current-feels', 'Feels like');
 
