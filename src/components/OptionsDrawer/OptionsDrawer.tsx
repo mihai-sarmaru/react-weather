@@ -7,6 +7,7 @@ import GooglePlaces from '../GooglePlaces/GooglePlaces';
 import LastLocations from '../LastLocations/LastLocations';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store/rootStore';
+import { removeCurrentSavedLocation } from '../../utils/LocationUtils';
 
 interface OptionsDrawerProps {
     open: boolean;
@@ -16,6 +17,11 @@ interface OptionsDrawerProps {
 const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
 
     const localization = useSelector((state: AppState) => state.localizationReducer.language);
+
+    const onCurrectLocationClick = () => {
+        removeCurrentSavedLocation();
+        window.location.reload(); // <-- refresh window
+    }
 
     return (
         <Drawer anchor='left' open={props.open} onClose={props.onClose} >
@@ -33,7 +39,7 @@ const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
                 <IconButton 
                     style={{backgroundColor: '#ffffff',
                         position: 'absolute', top: '0', right: '0', margin: '15px'}}
-                    onClick={props.onClose} >
+                    onClick={onCurrectLocationClick} >
                     <MdIcons.MdMyLocation size={18}/>
                 </IconButton>
             </Tooltip>

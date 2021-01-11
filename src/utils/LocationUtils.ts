@@ -47,6 +47,10 @@ export const getCurrentSavedLocationFromStorage = () => {
     return localStorageCurrentLocation !== null ? JSON.parse(localStorageCurrentLocation) as Location : null;
 }
 
+export const removeCurrentSavedLocation = () => {
+    localStorage.removeItem('current_location');
+}
+
 const addToCurrentLocation = (location: Location) => {
     localStorage.setItem('current_location', JSON.stringify(location));
 }
