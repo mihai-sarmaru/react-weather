@@ -46,6 +46,7 @@ export interface IWeatherCoordinates {
     latitude: number;
     longitude: number;
     timezoneOffset: number;
+    locationName: string;
 }
 
 export interface IWeather {

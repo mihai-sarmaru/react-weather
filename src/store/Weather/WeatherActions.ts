@@ -33,12 +33,12 @@ const invalidWeather = (): AppActions => {
     }
 }
 
-export const fetchWeather = (lat: number, long: number) => {
+export const fetchWeather = (lat: number, long: number, locationName = '') => {
     return (dispatch: Dispatch<AppActions>) => {
         dispatch(requestWeather());
         axios.get('/' + env.getApiDefaultParams(), {params: {lat: lat, lon: long}})
             .then(response => { 
-                dispatch(receiveWeather(mapIWeather(response.data)));
+                dispatch(receiveWeather(mapIWeather(response.data, locationName)));
             })
             .catch(error => {
                 console.log(error.message);

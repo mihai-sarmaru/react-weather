@@ -19,7 +19,7 @@ const LanguageOptions = () => {
     }
 
     return(
-        <div style={{width: '70%', margin: '10px auto'}}>
+        <div style={{width: '70%', textAlign: 'left', margin: '10px', paddingTop: '10px', paddingLeft: '10px'}}>
              <FormControl component="fieldset">
                 <FormLabel component="legend">{localization.language.get('options-lang-title')}</FormLabel>
                 <RadioGroup aria-label="language" name="language" value={localization.selected} onChange={handleSelectedLanguage} >

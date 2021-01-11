@@ -11,6 +11,10 @@ languageMap.set('nav-hourly', 'Hourly');
 languageMap.set('nav-later', 'Later');
 languageMap.set('nav-settings', 'Settings');
 
+// drawer
+languageMap.set('drawer-back', 'Back');
+languageMap.set('drawer-location', 'Current location');
+
 // current weather
 languageMap.set('current-feels', 'Feels like');
 
@@ -39,6 +43,9 @@ languageMap.set('chart-axis-48', '48h');
 // more less toggle button
 languageMap.set('toggle-more', 'More');
 languageMap.set('toggle-less', 'Less');
+
+// search
+languageMap.set('search-placeholder', 'Search...');
 
 // options
 languageMap.set('options-lang-title', 'Weather language');

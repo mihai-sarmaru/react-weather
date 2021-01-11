@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import Loading from "./components/Loading/Loading";
 import QuickNavigation from "./components/QuickNavigation/QuickNavigation";
-import BackgroundHOC from "./components/BackgroundHOC/BackgroundHOC";
+import BackgroundWithLocationHOC from "./components/BackgroundWithLocationHOC/BackgroundWithLocationHOC";
 import CurrentWeatherContainer from "./containers/CurrentWeatherContainer/CurrentWeatherContainer";
 import { useSelector } from "react-redux";
 import { AppState } from "./store/rootStore";
@@ -30,9 +30,9 @@ function App() {
     const showNavigationMenu = () => {
         let navMenu = null;
         if (showNavigation) {
-            navMenu = <BackgroundHOC>
+            navMenu = <BackgroundWithLocationHOC>
                         <QuickNavigation />
-                    </BackgroundHOC>
+                    </BackgroundWithLocationHOC>
         }
         return navMenu;
     }

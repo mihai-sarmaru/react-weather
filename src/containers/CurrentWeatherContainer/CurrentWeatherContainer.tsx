@@ -13,6 +13,7 @@ import { IWeather } from '../../store/Weather/models/Weather';
 import { fetchWeather } from '../../store/Weather/WeatherActions';
 import { UnixUTCDayIcon } from '../../utils/DateConverter';
 import { regionRomania } from '../../localization/utils/coordinates';
+import { getCurrentSavedLocationFromStorage } from '../../utils/LocationUtils';
 
 interface Props {}
 
@@ -22,7 +23,7 @@ interface LinkStateProps {
 }
 
 interface LinkDispatchProps {
-    fetchWeather: (lat: number, long: number) => void;
+    fetchWeather: (lat: number, long: number, locationName?: string) => void;
     changeLanguage: (lang: string) => void;
 }
 
@@ -46,18 +47,26 @@ class CurrentWeatherContainer extends Component<LinkProps> {
 
     componentDidMount() {
         if (!this.props.weather.currentWeather) {
-            if ('geolocation' in navigator) {
-                navigator.geolocation.getCurrentPosition(pos => {
-                    // Set starting language based on position 
-                    const localLang = regionRomania(pos.coords.latitude, pos.coords.longitude) ? 'romanian' : 'english';
-                    this.setLocalization(localLang);
-                    this.props.fetchWeather(pos.coords.latitude, pos.coords.longitude);
-                }, error => {
-                    // TODO: remove this when publishing autocomplete
-                    console.log(error.message);
-                    this.setLocalization('romanian');
-                    this.props.fetchWeather(+process.env.REACT_APP_DEFAULT_LAT!, +process.env.REACT_APP_DEFAULT_LONG!);
-                });
+
+            const savedLocation = getCurrentSavedLocationFromStorage();
+            if (savedLocation !== null) {
+                this.props.fetchWeather(savedLocation.lat, savedLocation.long, savedLocation.name);
+            } else {
+
+                if ('geolocation' in navigator) {
+                    navigator.geolocation.getCurrentPosition(pos => {
+                        // Set starting language based on position 
+                        const localLang = regionRomania(pos.coords.latitude, pos.coords.longitude) ? 'romanian' : 'english';
+                        this.setLocalization(localLang);
+                        this.props.fetchWeather(pos.coords.latitude, pos.coords.longitude);
+                    }, error => {
+                        // TODO: remove this when publishing autocomplete
+                        console.log(error.message);
+                        this.setLocalization('romanian');
+                        this.props.fetchWeather(+process.env.REACT_APP_DEFAULT_LAT!, +process.env.REACT_APP_DEFAULT_LONG!);
+                    });
+                }
+                
             }
         }
     }

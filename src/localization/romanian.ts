@@ -11,6 +11,10 @@ languageMap.set('nav-hourly', 'Urmează');
 languageMap.set('nav-later', 'Viitor');
 languageMap.set('nav-settings', 'Setări');
 
+// drawer
+languageMap.set('drawer-back', 'Înapoi');
+languageMap.set('drawer-location', 'Locația curentă');
+
 // current weather
 languageMap.set('current-feels', 'Se simte');
 
@@ -39,6 +43,9 @@ languageMap.set('chart-axis-48', '48 ore');
 // more less toggle button
 languageMap.set('toggle-more', 'Mai Mult');
 languageMap.set('toggle-less', 'Mai Puțin');
+
+// search
+languageMap.set('search-placeholder', 'Caută...');
 
 // options
 languageMap.set('options-lang-title', 'Schimbă limba');

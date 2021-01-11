@@ -23,6 +23,15 @@ const QuickNavigation = () => {
     
     return(
         <React.Fragment>
+            <Tooltip title={localization.language.get('nav-settings')!} >
+                <IconButton 
+                    style={{backgroundColor: '#ffffff', opacity: '0.9',
+                        position: 'absolute', top: '0', left: '0', margin: '15px'}}
+                    onClick={onOptionsButtonClick}>
+                    <MdIcons.MdMenu size={18}/>
+                </IconButton>
+            </Tooltip>
+
             <ButtonGroup variant='outlined' size='medium' style={{margin: '130px 0 0 0', background: 'white', opacity: '0.9'}}>
                 <Button startIcon={<WiIcons.WiThermometer />}
                     component={Link} to={'/'}>{localization.language.get('nav-now')}</Button>
@@ -32,15 +41,6 @@ const QuickNavigation = () => {
                     component={Link} to={'/forecast'}>{localization.language.get('nav-later')}</Button>
             </ButtonGroup>
             <OptionsDrawer open={navState.drawer} onClose={onOptionsButtonClick} />
-
-            <Tooltip title={localization.language.get('nav-settings')!} >
-                <IconButton 
-                    style={{backgroundColor: '#ffffff', opacity: '0.9',
-                        position: 'absolute', top: '0', right: '0', margin: '5px'}}
-                    onClick={onOptionsButtonClick}>
-                    <MdIcons.MdSettings size={18}/>
-                </IconButton>
-            </Tooltip>
         </React.Fragment>
     );
 }
