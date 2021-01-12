@@ -28,7 +28,7 @@ const QuickNavigation = () => {
                     style={{backgroundColor: '#ffffff', opacity: '0.9',
                         position: 'absolute', top: '0', left: '0', margin: '15px'}}
                     onClick={onOptionsButtonClick}>
-                    <MdIcons.MdMenu size={18}/>
+                    <MdIcons.MdMenu size={18} color='#000' />
                 </IconButton>
             </Tooltip>
 
