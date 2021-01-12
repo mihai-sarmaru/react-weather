@@ -14,6 +14,7 @@ import { fetchWeather } from '../../store/Weather/WeatherActions';
 import { UnixUTCDayIcon } from '../../utils/DateConverter';
 import { regionRomania } from '../../localization/utils/coordinates';
 import { getCurrentSavedLocationFromStorage } from '../../utils/LocationUtils';
+import NoGeolocation from '../../components/NoGeolocation/NoGeolocation';
 
 interface Props {}
 
@@ -43,7 +44,15 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, {}, AppActions>) =
     }
 };
 
+interface LocalState {
+    didLocate: boolean;
+}
+
 class CurrentWeatherContainer extends Component<LinkProps> {
+
+    state: LocalState = {
+        didLocate: true
+    }
 
     componentDidMount() {
         if (!this.props.weather.currentWeather) {
@@ -60,10 +69,11 @@ class CurrentWeatherContainer extends Component<LinkProps> {
                         this.setLocalization(localLang);
                         this.props.fetchWeather(pos.coords.latitude, pos.coords.longitude);
                     }, error => {
-                        // TODO: remove this when publishing autocomplete
+                        // Display search location
                         console.log(error.message);
-                        this.setLocalization('romanian');
-                        this.props.fetchWeather(+process.env.REACT_APP_DEFAULT_LAT!, +process.env.REACT_APP_DEFAULT_LONG!);
+                        this.setState( () => {
+                            return { didLocate: false }
+                        });
                     });
                 }
                 
@@ -84,7 +94,7 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     onLoadWeather = () => {
         let weather = <FetchingWeather />;
 
-        if (this.props.weather.currentWeather) {
+        if (this.props.weather.currentWeather && this.state.didLocate) {
             weather = (
                 <div>
                     <CurrentWeather
@@ -101,6 +111,10 @@ class CurrentWeatherContainer extends Component<LinkProps> {
                     precipitation={this.props.weather.hourlyWeather[0].precipitation} />
                 </div>
             );
+        }
+
+        if (!this.state.didLocate) {
+            weather = <NoGeolocation />;
         }
 
         return weather;
