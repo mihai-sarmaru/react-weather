@@ -22,7 +22,7 @@ function App() {
     const [showNavigation, setshowNavigation] = useState(false);
     
     useEffect(() => {
-        if (currentWeather.loading !== true) {
+        if (currentWeather.loading !== true && currentWeather.weather !== null) {
             setshowNavigation(true);
         }
     },[currentWeather]);

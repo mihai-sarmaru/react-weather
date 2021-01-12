@@ -29,7 +29,8 @@ const BackgroundWithLocationHOC: React.FC<BackgroundWithLocationHOCProps> = (pro
                     }}>
                 <div>
                     <div>{props.children}</div>
-                    <div style={{marginTop: '10px',
+                    <div style={weatherLocation === '' ? {display: 'none'} :
+                                {marginTop: '10px',
                                 padding: '5px 20px',
                                 display: 'inline-block',
                                 background: 'rgba(0, 0, 0, 0.2)',

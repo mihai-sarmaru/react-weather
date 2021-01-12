@@ -69,7 +69,7 @@ class ForecastContainer extends Component<LinkProps> {
             overviewItems = this.props.forecast.filter((el, index) => {
                 return index !== 0;
             }).map((item, index) => (
-                <Spring key={item.dt} from={{opacity: 0}} to={{opacity: 1}} delay={index * 200}>
+                <Spring key={item.dt} from={{opacity: 0}} to={{opacity: 1}} delay={index * 150}>
                     { sprops =>
                         <div style={sprops}>
                             <OverviewItem
