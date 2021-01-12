@@ -7,7 +7,7 @@ const NoGeolocation = () => {
     return(
         <div>
             <Box borderRadius={16}
-                style={{width: '75%', margin: '250px auto', padding: '20px', background: '#ffffff'}}>
+                style={{width: '75%', margin: '100px auto', padding: '20px', background: '#ffffff'}}>
                 <Icons.MdLocationOff size= {64} style={{marginBottom: '20px'}} />
                 <GooglePlaces />
             </Box>
