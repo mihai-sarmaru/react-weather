@@ -8,6 +8,7 @@ import LastLocations from '../LastLocations/LastLocations';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store/rootStore';
 import { removeCurrentSavedLocation } from '../../utils/LocationUtils';
+import BackgroundImageToggle from '../BackgroundImageToggle/BackgroundImageToggle';
 
 interface OptionsDrawerProps {
     open: boolean;
@@ -54,6 +55,9 @@ const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
                     </Box>
                     <Box borderRadius={16} className='box-default' style={{margin: '10px auto'}}>
                         <LanguageOptions />
+                    </Box>
+                    <Box borderRadius={16} className='box-default' style={{margin: '10px auto'}}>
+                        <BackgroundImageToggle />
                     </Box>
                     <Box borderRadius={16} className='box-default' style={{margin: '10px auto'}}>
                         <About />

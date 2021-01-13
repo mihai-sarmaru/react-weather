@@ -31,11 +31,11 @@ const mapICurrentWeather = (current: any) => {
         dt: current.dt * 1000,
         sunrise: current.sunrise * 1000,
         sunset: current.sunset * 1000,
-        temp: current.temp.toFixed(0),
+        temp: current.temp.toFixed(0) === '-0' ? 0 : current.temp.toFixed(0),
         feelsLike: current.feels_like.toFixed(0) === '-0' ? 0 : current.feels_like.toFixed(0),
         pressure: current.pressure,
         humidity: current.humidity,
-        dewPoint: current.dew_point.toFixed(0),
+        dewPoint: current.dew_point.toFixed(0) === '-0' ? 0 : current.dew_point.toFixed(0),
         uvi: current.uvi,
         clouds: current.clouds,
         visibility: current.visibility / 1000,
@@ -58,7 +58,7 @@ const mapIHourlyWeather = (hourlyWeather: any[]) => {
     return hourlyWeather.map(hourly => {
         return ({
             dt: hourly.dt * 1000,
-            temp: hourly.temp.toFixed(0),
+            temp: hourly.temp.toFixed(0) === '-0' ? 0 : hourly.temp.toFixed(0),
             windSpeed: hourly.wind_speed.toFixed(0),
             precipitation: +(hourly.pop * 100).toFixed(0),
             weather: mapIWeatherDescription(hourly.weather)
@@ -71,8 +71,8 @@ const mapIForecastWeather = (forecastWeather: any[]) => {
         return ({
             dt: forecast.dt * 1000,
             precipitation: +(forecast.pop * 100).toFixed(0),
-            maxTemp: +forecast.temp.max.toFixed(0),
-            minTemp: +forecast.temp.min.toFixed(0),
+            maxTemp: forecast.temp.max.toFixed(0) === '-0' ? 0 : +forecast.temp.max.toFixed(0),
+            minTemp: forecast.temp.min.toFixed(0) === '-0' ? 0 : +forecast.temp.min.toFixed(0),
             windSpeed: +forecast.wind_speed.toFixed(0),
             uvi: forecast.uvi,
             clouds: forecast.clouds,
