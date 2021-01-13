@@ -37,7 +37,7 @@ const BackgroundWithLocationHOC: React.FC<BackgroundWithLocationHOCProps> = (pro
                                 padding: '5px 20px',
                                 display: 'inline-block',
                                 background: 'rgba(0, 0, 0, 0.2)',
-                                backdropFilter: 'blur(1px)',
+                                backdropFilter: 'blur(2px)',
                                 borderRadius: '12px'}}>
                         <Typography variant='subtitle2'
                             style={{color: '#ffffff', fontSize: '12px'}}>
