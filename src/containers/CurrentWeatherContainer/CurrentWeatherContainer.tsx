@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
+import Geocode from "react-geocode";
+import env from '../../utils/env';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import DetailWeather from '../../components/DetailWeather/DetailWeather';
 import FetchingWeather from '../../components/FetchingWeather/FetchingWeather';
@@ -67,7 +69,7 @@ class CurrentWeatherContainer extends Component<LinkProps> {
                         // Set starting language based on position 
                         const localLang = regionRomania(pos.coords.latitude, pos.coords.longitude) ? 'romanian' : 'english';
                         this.setLocalization(localLang);
-                        this.props.fetchWeather(pos.coords.latitude, pos.coords.longitude);
+                        this.fetchWeatherWithDescription(pos.coords.latitude, pos.coords.longitude);
                     }, error => {
                         // Display search location
                         console.log(error.message);
@@ -79,6 +81,18 @@ class CurrentWeatherContainer extends Component<LinkProps> {
                 
             }
         }
+    }
+
+    fetchWeatherWithDescription = (latitude: number, longitude: number) => {
+        Geocode.fromLatLng(latitude.toString(), longitude.toString(), env.getApiLocK())
+            .then(response => {
+                console.log(response);
+                this.props.fetchWeather(latitude, longitude, response.results[0].formatted_address);
+            })
+            .catch(err => {
+                console.log(err);
+                this.props.fetchWeather(latitude, longitude);
+            });
     }
 
     setLocalization = (localLang: string) => {

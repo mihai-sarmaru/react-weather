@@ -17,7 +17,7 @@ const DetailWeather: React.FC<DetailWeatherProps> = (props) => {
                 { sprops => 
                     <div style={sprops}>
                         <Box borderRadius={16} className='box-default'>
-                            <div style={{margin: '0 auto 30px auto', width: '80%'}}>
+                            <div style={{margin: '0 auto 30px auto', width: '85%'}}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={6} md={4} lg={3}>
                                         <DetailItem itemType={DetailItemType.PRECIPITATION_CHANCE} value={props.precipitation}/>

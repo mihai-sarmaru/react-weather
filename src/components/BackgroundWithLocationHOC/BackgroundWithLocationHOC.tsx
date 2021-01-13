@@ -30,13 +30,16 @@ const BackgroundWithLocationHOC: React.FC<BackgroundWithLocationHOCProps> = (pro
                 <div>
                     <div>{props.children}</div>
                     <div style={weatherLocation === '' ? {display: 'none'} :
-                                {marginTop: '10px',
+                                {marginTop: '12px',
                                 padding: '5px 20px',
                                 display: 'inline-block',
                                 background: 'rgba(0, 0, 0, 0.2)',
                                 backdropFilter: 'blur(1px)',
                                 borderRadius: '12px'}}>
-                        <Typography variant='subtitle2' style={{color: '#ffffff'}}>{weatherLocation}</Typography>
+                        <Typography variant='subtitle2'
+                            style={{color: '#ffffff', fontSize: '12px'}}>
+                                {weatherLocation}
+                            </Typography>
                     </div>
                 </div>
                 
