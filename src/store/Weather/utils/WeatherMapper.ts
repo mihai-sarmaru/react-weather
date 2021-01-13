@@ -58,7 +58,7 @@ const mapIHourlyWeather = (hourlyWeather: any[]) => {
     return hourlyWeather.map(hourly => {
         return ({
             dt: hourly.dt * 1000,
-            temp: hourly.temp.toFixed(0) === '-0' ? 0 : hourly.temp.toFixed(0),
+            temp: hourly.temp.toFixed(0) === '-0' ? '0' : hourly.temp.toFixed(0),
             windSpeed: hourly.wind_speed.toFixed(0),
             precipitation: +(hourly.pop * 100).toFixed(0),
             weather: mapIWeatherDescription(hourly.weather)
