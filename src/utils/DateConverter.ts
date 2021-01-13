@@ -2,7 +2,10 @@ import { ILocalization } from "../localization/model/localizationModel";
 
 export const UnixUTCToHourMinuteString = (utcTime: number) => {
     const date = new Date(utcTime);
-    return date.getHours() + ':' + date.getMinutes();
+    const hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+
+    return hours + ':' + minutes;
 }
 
 export const UnixUTCToDayString = (utcTime: number, localization: ILocalization) => {
