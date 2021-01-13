@@ -45,7 +45,7 @@ const OptionsDrawer: React.FC<OptionsDrawerProps> = (props) => {
                 </IconButton>
             </Tooltip>
 
-            <div style={{background: '#f3f3f3', height: '100%'}}>
+            <div style={{background: '#f3f3f3', height: '300%'}}>
                 <Grid container style={{width: '300px', marginTop: '50px'}}>
                     <Box borderRadius={16} className='box-default' style={{margin: '20px auto 10px auto'}}>
                         <GooglePlaces />
