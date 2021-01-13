@@ -42,3 +42,16 @@ export const getRandomWeatherImage = (weatherId: number) => {
 
     return weatherImage;
 }
+
+export const saveUnsplashOption = (option: boolean) => {
+    localStorage.setItem('unsplash', JSON.stringify(option));
+}
+
+export const getUnsplashOption = (): boolean => {
+    const option = localStorage.getItem('unsplash');
+    return option !== null ? JSON.parse(option) : false; 
+}
+
+export const getUnsplashImageLink = () => {
+    return 'https://source.unsplash.com/1600x900/?nature';
+}
