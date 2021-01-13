@@ -52,6 +52,9 @@ languageMap.set('options-lang-title', 'Schimbă limba');
 languageMap.set('options-lang-en', 'Engleză');
 languageMap.set('options-lang-ro', 'Romană');
 
+// unsplash
+languageMap.set('unsplash', 'Fundal aleatoriu');
+
 // about
 languageMap.set('about-built', 'Construit cu ');
 languageMap.set('about-by', ' de ');

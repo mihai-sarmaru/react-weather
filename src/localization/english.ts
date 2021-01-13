@@ -52,6 +52,9 @@ languageMap.set('options-lang-title', 'Weather language');
 languageMap.set('options-lang-en', 'English');
 languageMap.set('options-lang-ro', 'Romanian');
 
+// unsplash
+languageMap.set('unsplash', 'Random background');
+
 // about
 languageMap.set('about-built', 'Built with ');
 languageMap.set('about-by', ' by ');
