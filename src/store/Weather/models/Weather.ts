@@ -23,6 +23,7 @@ export interface ICurrentWeather {
 export interface IHourlyWeather {
     dt: number;
     temp: number;
+    feelsLike: number;
     windSpeed: number;
     precipitation: number;
     weather: IWeatherDescription[];
