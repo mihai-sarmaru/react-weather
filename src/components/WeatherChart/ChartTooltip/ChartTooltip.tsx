@@ -14,11 +14,13 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
 
     let tooltipMeasurement = '';
     let tooltipMeasurementIcon = <WiIcons.WiAlien size={20} color='#000'/>;
+    let feelsLike = false;
     if (props.active) {
         switch (props.chartType) {
             case chartType.TEMPERATURE:
                 tooltipMeasurement = props.payload[0].payload.temp + String.fromCharCode(176);
                 tooltipMeasurementIcon = <WiIcons.WiThermometer size={20} color='#86c3d6'/>;
+                feelsLike = true;
                 break;
             case chartType.WIND:
                 tooltipMeasurement = props.payload[0].payload.windSpeed + ' km/h';
@@ -31,6 +33,7 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
             default:
                 tooltipMeasurement = props.payload[0].payload.temp + String.fromCharCode(176);
                 tooltipMeasurementIcon = <WiIcons.WiThermometer size={20} color='#86c3d6'/>;
+                feelsLike = true;
                 break;
         }
     }
@@ -47,6 +50,10 @@ const ChartTooltip: React.FC<ChartTooltipProps> = (props) => {
                     <Grid item>
                         {tooltipMeasurementIcon}
                         <Typography>{tooltipMeasurement}</Typography>
+                    </Grid>
+                    <Grid item style={feelsLike ? {display: 'block'} : {display: 'none'}}>
+                        <WiIcons.WiThermometerExterior size={20} color='#ccc'/>
+                        <Typography style={{color: '#ccc'}}>({props.payload[0].payload.feelsLike}&deg;)</Typography>
                     </Grid>
                 </Grid>
 
