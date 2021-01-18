@@ -8,6 +8,10 @@ class env {
         return process.env.REACT_APP_API_PARAMS + this.buildApi(true);
     }
 
+    public static getGCodeAPI() {
+        return process.env.REACT_APP_GCODE_API + this.buildApi(false) + process.env.REACT_APP_GCODE_PARAMS;
+    }
+
     public static getApiLocK() {
         return this.buildApi(false);
     }

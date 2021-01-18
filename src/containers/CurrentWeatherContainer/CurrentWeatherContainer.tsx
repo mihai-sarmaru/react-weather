@@ -83,11 +83,12 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     }
 
     fetchWeatherWithDescription = (latitude: number, longitude: number) => {
-        Geocode.fromLatLng(latitude.toString(), longitude.toString(), env.getApiLocK())
-            .then(response => {
-                console.log(response);
-                this.props.fetchWeather(latitude, longitude, response.results[0].formatted_address);
-            })
+        const latLongParams = latitude + ',' + longitude;
+        fetch(env.getGCodeAPI() + latLongParams)
+            .then(response => response.json())
+            .then(data => {
+                this.props.fetchWeather(latitude, longitude, data.results[0].formatted_address);
+                })
             .catch(err => {
                 console.log(err);
                 this.props.fetchWeather(latitude, longitude);
