@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import Geocode from "react-geocode";
 import env from '../../utils/env';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import DetailWeather from '../../components/DetailWeather/DetailWeather';
@@ -84,11 +83,12 @@ class CurrentWeatherContainer extends Component<LinkProps> {
     }
 
     fetchWeatherWithDescription = (latitude: number, longitude: number) => {
-        Geocode.fromLatLng(latitude.toString(), longitude.toString(), env.getApiLocK())
-            .then(response => {
-                console.log(response);
-                this.props.fetchWeather(latitude, longitude, response.results[0].formatted_address);
-            })
+        const latLongParams = latitude + ',' + longitude;
+        fetch(env.getGCodeAPI() + latLongParams)
+            .then(response => response.json())
+            .then(data => {
+                this.props.fetchWeather(latitude, longitude, data.results[0].formatted_address);
+                })
             .catch(err => {
                 console.log(err);
                 this.props.fetchWeather(latitude, longitude);
