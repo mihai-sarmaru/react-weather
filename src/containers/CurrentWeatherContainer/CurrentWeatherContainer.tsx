@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import Geocode from "react-geocode";
 import env from '../../utils/env';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import DetailWeather from '../../components/DetailWeather/DetailWeather';
