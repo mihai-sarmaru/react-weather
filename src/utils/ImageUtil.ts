@@ -53,5 +53,5 @@ export const getUnsplashOption = (): boolean => {
 }
 
 export const getUnsplashImageLink = () => {
-    return 'https://source.unsplash.com/1600x900/?nature';
+    return 'https://source.unsplash.com/random';
 }
